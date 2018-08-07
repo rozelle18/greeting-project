@@ -1,0 +1,45 @@
+body {
+    font-family: "Asap", sans-serif;
+    color:#989898;
+    margin:10px;
+    font-size:16px;
+    height: 4500px;
+}
+
+.box {
+    width:20px;
+    height:20px;
+    position:relative;
+    border-radius:6px;
+    text-align:center;
+    line-height:10px;
+    color:black;
+    font-size:10px;
+}
+
+.green{
+    background-color:#6fb936;
+}
+
+.blue{
+    background-color:blue;
+}
+.red{
+    background-color:red;
+}
+.yellow{
+    background-color:yellow;
+}
+
+#nightsky {
+    height: 1699px;
+    width: 100%;
+    background-image: url("../assets/topper-background-2.jpg");
+    background-size: cover;
+}
+
+#meteor-container{
+    height: inherit;
+    width: 100%;
+    background-color: rgba(0,0,0,.4);
+}
