@@ -1,4 +1,25 @@
 
+var nightsky_cg = new PIXI.Application(window.innerWidth, window.innerHeight, { antialias: true , autoResize: true, resolution: devicePixelRatio});
+
+document.getElementById('meteor-container').appendChild(nightsky_cg.view);
+
+var circle = new PIXI.Graphics();
+// set a fill and line style
+circle.beginFill(0xFFFFFF, .5);
+circle.lineStyle(4, 0xffd900, 1);
+circle.drawCircle(470, 90,60);
+circle.endFill();
+nightsky_cg.stage.addChild(circle);
+// app.ticker.add(function(delta) {
+//     var speed = 0.5;
+//     console.log(circle.x < (screen.width/3));
+//     if(circle.x < (screen.width/3)){
+//         speed = 2;
+//     }
+//     circle.x += speed * delta;
+//     rect.y += 1 * delta;
+// });
+
 var cont = new ScrollMagic.Controller({vertical: true});
 
 var tween = new TimelineMax()
@@ -37,11 +58,3 @@ for (let i = 0; i < numberOfStars; i++){
 function randomizer(end){
     return Math.floor((Math.random() * end) + 1);
 }
-
-var cv1 = document.getElementById('canvas_one');
-var ctx= cv1.getContext('2d');
-ctx.beginPath();
-ctx.arc(250, 75, 1.5, 0, 2*Math.PI);
-ctx.stroke();
-ctx.fillStyle = 'white';
-ctx.fill();
