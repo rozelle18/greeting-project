@@ -5,15 +5,15 @@ var nightsky_cg = new PIXI.Application(w, h, { antialias: true});
 document.getElementById('meteor-container').appendChild(nightsky_cg.view);
 
 var numberOfStars = 100;
-var starRadius = 8;
+var starRadius = 2;
 
 for (let i = 0; i < numberOfStars; i++){
     var star = new PIXI.Graphics();
     star.beginFill(0xFFFFFF, Math.random().toFixed(2));
     star.drawCircle(0, 0, starRadius);
     star.endFill();
-    star.position.x = w/2;
-    star.position.y = h/2;
+    star.position.x = randomizer(w)/2;
+    star.position.y = randomizer(h)/2;
     nightsky_cg.stage.addChild(star);
 }
 
