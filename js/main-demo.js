@@ -100,7 +100,8 @@ class Star {
     var sm_cont = new ScrollMagic.Controller();
 
     var firstPart = new TimelineMax()
-    .to("#firstpart-greeting", 5, {opacity:1, yoyo:true});
+    .to("#firstpart-greeting", 3, {opacity:1})
+    .to("#firstpart-greeting", 2,{ opacity:0});
 
     var scene_1 = new ScrollMagic.Scene({
         triggerElement: "#firstpart-greeting"
