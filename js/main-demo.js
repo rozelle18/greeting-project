@@ -7,12 +7,14 @@ let height = window.innerHeight;
 
 var params = {
     speed: 15,
-    stars: 250
+    stars: 300,
+    starSize: 4
 };
 let app = new PIXI.Application({
     width: width,
     height: height,
-    antialias: true
+    antialias: true,
+    transparent: true
 });
 let stars = [];
 function setup() {
@@ -74,14 +76,14 @@ class Star {
         this.graphic.clear();
         const sx = map(this.x / this.z, 0, 1, 0, width);
         const sy = map(this.y / this.z, 0, 1, 0, height);
-        const r = map(this.z, 0, width, 16, 0);
+        const r = map(this.z, 0, width, params.starSize, 0);
         this.graphic.lineStyle(0);
         this.graphic.beginFill(0xFFFFFF);
         this.graphic.drawCircle(sx, sy, r / 4);
         this.graphic.endFill();
         const px = map(this.x / this.pz, 0, 1, 0, width);
         const py = map(this.y / this.pz, 0, 1, 0, height);
-        this.graphic.lineStyle(4, 0xffff99, 1);
+        this.graphic.lineStyle(4, 0x42f4f1, 1);
         this.graphic.moveTo(px, py);
         this.graphic.lineTo(sx, sy);
         this.pz = this.z;

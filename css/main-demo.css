@@ -2,5 +2,10 @@ body {
     margin:0;
     padding:0;
     overflow:hidden;
+    background-image: url('../assets/topper-background-2.jpg');
+    background-size: cover;
 }
 
+#sketch-holder {
+    background-color: rgba(0,0,0,.55);
+}
