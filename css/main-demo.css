@@ -1,8 +1,7 @@
 body {
     margin:0;
     padding:0;
-    background-image: url('../assets/topper-background-2.jpg');
-    background-size: cover;
+    background-color: black;
 }
 
 h1 {
@@ -10,6 +9,23 @@ h1 {
     font-size: 5em;
     color: white;
 }
+
+.starry-sky {
+    background-image: url('../assets/topper-background-2.jpg');
+    background-size: cover;
+    height: 1699px;
+}
+
 #sketch-holder {
-    background-color: rgba(0,0,0,.55);
+    z-index: -1;
+    background: linear-gradient(rgba(0,0,0,.1), black);
+}
+
+.main-container {
+    height: 3500px;
+}
+
+#firstpart-greeting {
+    top: 0;
+    opacity: 0;
 }

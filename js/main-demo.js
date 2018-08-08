@@ -1,12 +1,9 @@
 
 window.addEventListener('load', setup);
 let width = window.innerWidth;
-let height = window.innerHeight;
-// let width = 256
-// let height = 256
-
+let height = 1699;
 var params = {
-    speed: 5,
+    speed: 25,
     stars: 500,
     starSize: 4
 };
@@ -91,8 +88,25 @@ class Star {
 }
 //-----------------Tweenmax----------------
 
-var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
-tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
-tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
+// var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
+// tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
+// tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
 // tl.addLabel('test-tl');
 // tl.play('test-tl');
+
+(function(){
+    console.log('self-invoking function');  
+
+    var sm_cont = new ScrollMagic.Controller();
+
+    var firstPart = new TimelineMax()
+    .to("#firstpart-greeting", 5, {opacity:1, yoyo:true});
+
+    var scene_1 = new ScrollMagic.Scene({
+        triggerElement: "#firstpart-greeting"
+    })
+    .setTween(firstPart)
+    .addTo(sm_cont);
+})();
+
+
