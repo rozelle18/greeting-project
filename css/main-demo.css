@@ -4,10 +4,3 @@ body {
     overflow:hidden;
 }
 
-canvas {
-    display:block;
-}
-
-#meteor-container {
-    width: 100%;
-}
