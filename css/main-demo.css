@@ -1,11 +1,15 @@
 body {
     margin:0;
     padding:0;
-    overflow:hidden;
     background-image: url('../assets/topper-background-2.jpg');
     background-size: cover;
 }
 
+h1 {
+    font-weight: bolder;
+    font-size: 5em;
+    color: white;
+}
 #sketch-holder {
     background-color: rgba(0,0,0,.55);
 }

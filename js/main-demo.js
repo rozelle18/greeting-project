@@ -6,8 +6,8 @@ let height = window.innerHeight;
 // let height = 256
 
 var params = {
-    speed: 15,
-    stars: 300,
+    speed: 5,
+    stars: 500,
     starSize: 4
 };
 let app = new PIXI.Application({
@@ -89,3 +89,10 @@ class Star {
         this.pz = this.z;
     }
 }
+//-----------------Tweenmax----------------
+
+var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
+tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
+tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
+// tl.addLabel('test-tl');
+// tl.play('test-tl');
