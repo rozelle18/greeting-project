@@ -1,9 +1,16 @@
-var params = {
-    speed: 3,
-    stars: 500,
-    starSize: 16
-};
+
+
+
 $(document).ready(function(){
+
+    var sm_cont = new ScrollMagic.Controller();
+
+    var params = {
+        speed: 3,
+        stars: 500,
+        starSize: 16,
+        speedScroller: true
+    };
 
     let width = window.innerWidth;
     let height = 1699;
@@ -94,7 +101,6 @@ $(document).ready(function(){
 // tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
 // tl.addLabel('test-tl');
 // tl.play('test-tl');
-    var sm_cont = new ScrollMagic.Controller();
     // sm_cont.scrollTo(function(newpos){
     //     TweenMax.to(window, 0.5, {scrollTo: {y:newpos}});
     // });
@@ -102,9 +108,12 @@ $(document).ready(function(){
     (function(){
         window.ontouchmove = function(e) {
             //console.log(e);
-            if (firstPartTl.isActive()){
-                e.returnValue = false;
+            if(params.speedScroller){
+                params.speed = sm_cont.scrollPos()/10;
             }
+            // if (firstPartTl.isActive()){
+            //     e.returnValue = false;
+            // }
         };
         console.log('self-invoking function');
         // const aGreeting = [
@@ -119,33 +128,31 @@ $(document).ready(function(){
         const aGreeting = [
             'short greeting for testing'
         ];
-        var firstPartElement = $('.first-part');
-        var firstPartTl = new TimelineMax();
-        firstPartTl.add(
-            TweenLite.to(window, 3,
-                {
-                    scrollTo:{ y : "#firstPartDiv" },
-                    onStart(){
-                        $('#scrollIndicator').fadeOut(1000);
-                        params.speed = 50;
-                    }
-                }
-            ), 1
-        );
+        // var firstPartTl = new TimelineMax();
+        // firstPartTl.add(
+        //     TweenLite.to(window, 3,
+        //         {
+        //             scrollTo:{ y : "#firstPartDiv" },
+        //             onStart(){
+        //                 $('#scrollIndicator').fadeOut(1000);
+        //             }
+        //         }
+        //     ), 1
+        // );
 
-        aGreeting.forEach(function(v,i){
-            $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
-            console.log(v.length/7);
-            firstPartTl.add(
-                TweenMax.to('.firstPartText_'+i, v.length/15, {
-                    display: "block",
-                    opacity: 1,
-                    yoyo: true,
-                    repeatDelay: 1,
-                    repeat: 1
-                })
-            );
-        });
+        // aGreeting.forEach(function(v,i){
+        //     $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
+        //     console.log(v.length/7);
+        //     firstPartTl.add(
+        //         TweenMax.to('.firstPartText_'+i, v.length/15, {
+        //             display: "block",
+        //             opacity: 1,
+        //             yoyo: true,
+        //             repeatDelay: 1,
+        //             repeat: 1
+        //         })
+        //     );
+        // });
 
         /*
         * firstPartTl.add(
@@ -157,23 +164,68 @@ $(document).ready(function(){
             );
             <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
         * */
-        firstPartTl.call(function(){
-            console.log('--slow starspeed--');
-            params.speed = 5;
-            $('#scrollIndicator').fadeIn(1000);
-        });
+        // firstPartTl.call(function(){
+        //     console.log('--slow starspeed--');
+        //     params.speed = 5;
+        //     $('#scrollIndicator').fadeIn(1000);
+        // });
 
 
-        var scene_1 = new ScrollMagic.Scene({
-            triggerElement: '.first-part',
+        // var scene_1 = new ScrollMagic.Scene({
+        //     triggerElement: '#firstPartDiv',
+        //     reverse: false
+        // })
+        // .setTween()
+        // .addIndicators()
+        // .addTo(sm_cont);
+
+        /* Start of second scene */
+        var secondPartTl = new TimelineMax();
+        secondPartTl.add(
+            TweenLite.to(window, 3,
+                {
+                    onStart(){
+                        console.log('secondpart');
+                    }
+                }
+            ), 1
+        );
+        var scene_2 = new ScrollMagic.Scene({
+            triggerElement: '#secondPartDiv',
             reverse: false
         })
-        .setTween(firstPartTl)
+        .setTween(TweenLite.to('#secondPartDiv', 1, {opacity:0}))
         .addIndicators()
         .addTo(sm_cont);
 
+        var thirdPartTl = new TimelineMax();
+        thirdPartTl.add(
+            TweenLite.to(window, 3,
+                {
+                    onStart(){
+                        console.log('thirdpart');
+                    }
+                }
+            ), 1
+        );
+
+        var scene_3 = new ScrollMagic.Scene({
+            triggerElement: '#thirdPartDiv',
+            reverse: false
+        })
+        .on("enter", slowDownStars)
+        .setTween(thirdPartTl)
+        .addIndicators()
+        .addTo(sm_cont);
+
+        function slowDownStars(e){
+            console.log('slowdown');
+            params.speedScroller = false;
+            params.speed = 10;
+        }
 
     })();
+
 });
 //
 // function preventDefault(e) {
