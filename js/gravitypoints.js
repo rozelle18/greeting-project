@@ -203,6 +203,7 @@ $(document).ready(function(){
                 this.radius *= 0.75;
                 if (this.currentRadius < 1) this.destroyed = true;
                 this._draw(ctx);
+                $('#gravitypoint-sketch-holder').fadeOut(2000);
                 return;
             }
 
@@ -258,8 +259,9 @@ $(document).ready(function(){
 
             r = Math.random() * this.currentRadius * 0.7 + this.currentRadius * 0.3;
             grd = ctx.createRadialGradient(this.x, this.y, r, this.x, this.y, this.currentRadius);
-            grd.addColorStop(0, 'rgba(0, 0, 0, 1)');
-            grd.addColorStop(1, Math.random() < 0.2 ? 'rgba(255, 196, 0, 0.15)' : 'rgba(103, 181, 191, 0.75)');
+            //gravity ball
+            grd.addColorStop(0, 'rgba(150,150,150, .6)');
+            grd.addColorStop(1, Math.random() < 0.2 ? 'rgba(255, 0, 0, 0.5)' : 'rgba(255, 100, 0, 0.75)');
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.currentRadius, 0, Math.PI * 2, false);
             ctx.fillStyle = grd;
@@ -358,8 +360,8 @@ $(document).ready(function(){
                 cy = canvas.height * 0.5;
 
             grad = context.createRadialGradient(cx, cy, 0, cx, cy, Math.sqrt(cx * cx + cy * cy));
-            grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
-            grad.addColorStop(1, 'rgba(0, 0, 0, 0.35)');
+            grad.addColorStop(0, 'rgba(0, 0, 0, 0.1)');
+            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
         }
 
         function mouseMove(e) {
@@ -475,10 +477,6 @@ $(document).ready(function(){
             var i, len, g, p;
 
             context.save();
-            context.fillStyle = BACKGROUND_COLOR;
-            context.fillRect(0, 0, screenWidth, screenHeight);
-            context.fillStyle = grad;
-            context.fillRect(0, 0, screenWidth, screenHeight);
             context.restore();
 
             for (i = 0, len = gravities.length; i < len; i++) {
@@ -504,7 +502,7 @@ $(document).ready(function(){
             // }
             len = particles.length;
             bufferCtx.save();
-            bufferCtx.fillStyle = bufferCtx.strokeStyle = '#fff';
+            bufferCtx.fillStyle = bufferCtx.strokeStyle = 'rgba(255,255,255,.4)';
             bufferCtx.lineCap = bufferCtx.lineJoin = 'round';
             bufferCtx.lineWidth = PARTICLE_RADIUS * 2;
             bufferCtx.beginPath();

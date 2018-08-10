@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d138dfdf-74d7-4e45-a3f6-f3045629e05e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/gravitypoints.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/jquery-3.3.1.min.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/css/main-demo.css" afterPath="$PROJECT_DIR$/css/main-demo.css" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change beforePath="$PROJECT_DIR$/js/gravitypoints.js" afterPath="$PROJECT_DIR$/js/gravitypoints.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +26,7 @@
       <file leaf-file-name="main-demo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/main-demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-46">
+            <state relative-caret-position="-322">
               <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
               <folding>
                 <marker date="1533886995666" expanded="true" signature="3982:4352" ph="..." />
@@ -42,8 +38,8 @@
       <file leaf-file-name="gravitypoints.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/gravitypoints.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-89">
-              <caret line="518" column="39" lean-forward="true" selection-start-line="518" selection-start-column="39" selection-end-line="518" selection-end-column="39" />
+            <state relative-caret-position="253">
+              <caret line="205" column="62" lean-forward="false" selection-start-line="205" selection-start-column="62" selection-end-line="205" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -95,14 +91,17 @@
       <find>dat</find>
       <find>firstpart-text-container</find>
       <find>particleNum</find>
-      <find>fill</find>
       <find>BACKGROUND_COLOR</find>
-      <find>params.speed</find>
       <find>grad</find>
       <find>background-0</find>
       <find>BACKGROUND</find>
       <find>BAC</find>
       <find>G_POINT_RADIUS_LIMITS</find>
+      <find>destory</find>
+      <find>params.speed</find>
+      <find>fill</find>
+      <find>radius</find>
+      <find>ctx</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -235,12 +234,12 @@
       <workItem from="1533609021635" duration="17646000" />
       <workItem from="1533695642647" duration="17578000" />
       <workItem from="1533771397447" duration="22618000" />
-      <workItem from="1533857648274" duration="18479000" />
+      <workItem from="1533857648274" duration="19712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76321000" />
+    <option name="totallyTimeSpent" value="77554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -455,7 +454,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/main-demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-46">
+        <state relative-caret-position="-322">
           <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
           <folding>
             <marker date="1533886995666" expanded="true" signature="3982:4352" ph="..." />
@@ -463,10 +462,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="1638" column="38" lean-forward="true" selection-start-line="1638" selection-start-column="38" selection-end-line="1638" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/gravitypoints.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-89">
-          <caret line="518" column="39" lean-forward="true" selection-start-line="518" selection-start-column="39" selection-end-line="518" selection-end-column="39" />
+        <state relative-caret-position="253">
+          <caret line="205" column="62" lean-forward="false" selection-start-line="205" selection-start-column="62" selection-end-line="205" selection-end-column="62" />
           <folding />
         </state>
       </provider>
