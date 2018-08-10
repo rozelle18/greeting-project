@@ -38,7 +38,12 @@ h1 {
     margin: auto;
     opacity: 0;
 }
-
+#secondpart-greeting {
+    padding: auto;
+    text-align: center;
+    margin: auto;
+    opacity: 0;
+}
 .main-container {
     height: 3500px;
 }
@@ -90,6 +95,20 @@ h1 {
     height: inherit;
     font-family: 'Dancing Script', cursive;
     font-family: 'Satisfy', cursive;
+}
+#secondpart-text-container {
+    padding: 60px;
+    height: inherit;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Satisfy', cursive;
+}
+.greeting.second-part {
+    height: 100vh;
+    background-color: rgba(100,0,0,.5);
+}
+.greeting.third-part {
+    height: 100vh;
+    background-color: rgba(0,0,155,.5);
 }
 /* ---- imported arrow animation */
 html body [data-ca3_iconfont="ETmodules"]::before {
