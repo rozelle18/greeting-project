@@ -101,7 +101,7 @@ $(document).ready(function(){
     // TweenMax.to(".scrolldown-i", 1, {opacity: 0, yoyo: true, repeat: -1});
     (function(){
         window.ontouchmove = function(e) {
-            console.log(e);
+            //console.log(e);
             if (firstPartTl.isActive()){
                 e.returnValue = false;
             }
@@ -120,7 +120,7 @@ $(document).ready(function(){
         var firstPartElement = $('.first-part');
         var firstPartTl = new TimelineMax();
         firstPartTl.add(
-            TweenLite.to(window, 5,
+            TweenLite.to(window, 1,
                 {
                     scrollTo:{ y : "#firstPartDiv" },
                     onStart(){
@@ -130,17 +130,37 @@ $(document).ready(function(){
             ), 1
         );
 
-        console.log(firstPartTl.isActive());
-
-        aGreeting.forEach(function(sVal){
+        aGreeting.forEach(function(v,i){
+            $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
             firstPartTl.add(
-                TweenMax.to('.text-container',3,{
-
+                TweenMax.to('.firstPartText_'+i, v.length/15, {
+                    display: "block",
+                    opacity: 1,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
                 })
             );
         });
+
+        /*
+        * firstPartTl.add(
+                TweenMax.to('.text-container', 1,{
+                    onStart(){
+                        params.speed -= 10;
+                    }
+                })
+            );
+        * */
+        firstPartTl.call(function(){
+            console.log('--slow starspeed--');
+            params.speed = 5;
+        });
+
+
         var scene_1 = new ScrollMagic.Scene({
-            triggerElement: ".first-part",
+            triggerElement: '.first-part',
             reverse: false
         })
         .setTween(firstPartTl)
