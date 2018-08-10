@@ -165,3 +165,14 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 }
 
 /*End of import*/
+
+
+/*gravity points*/
+#gravitypoint-sketch-holder {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(200,200,0,.3);
+}
