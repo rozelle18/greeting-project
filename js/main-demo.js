@@ -107,23 +107,26 @@ $(document).ready(function(){
             }
         };
         console.log('self-invoking function');
+        // const aGreeting = [
+        //     "uhmm...",
+        //     "Hi :) ",
+        //     "Lorem ipsum dolor",
+        //     " Proin ac aliquam odio ",
+        //     "  id blandit libero placerat. In gravida nibh",
+        //     "  Vivamus.",
+        //     "Proin id viverra erat. "
+        // ];
         const aGreeting = [
-            "uhmm...",
-            "Hi :) ",
-            "Lorem ipsum dolor",
-            " Proin ac aliquam odio ",
-            "  id blandit libero placerat. In gravida nibh",
-            "  Vivamus.",
-            "Proin id viverra erat. "
+            'short greeting for testing'
         ];
-
         var firstPartElement = $('.first-part');
         var firstPartTl = new TimelineMax();
         firstPartTl.add(
-            TweenLite.to(window, 1,
+            TweenLite.to(window, 3,
                 {
                     scrollTo:{ y : "#firstPartDiv" },
                     onStart(){
+                        $('#scrollIndicator').fadeOut(1000);
                         params.speed = 50;
                     }
                 }
@@ -152,10 +155,12 @@ $(document).ready(function(){
                     }
                 })
             );
+            <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
         * */
         firstPartTl.call(function(){
             console.log('--slow starspeed--');
             params.speed = 5;
+            $('#scrollIndicator').fadeIn(1000);
         });
 
 
