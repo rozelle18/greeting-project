@@ -5,7 +5,7 @@ $(document).ready(function(){
 
 
     function startCollapsedShow(){
-        $('#gravitypoint-sketch-holder').fadeOut(3000,function(){
+        $('#gravitypoint-sketch-holder').fadeOut(2000,function(){
             console.log('Final Timeline');
             let aGreeting = [
                 'final greeting for testing',
@@ -13,7 +13,7 @@ $(document).ready(function(){
             ];
             var firstPartTl = new TimelineMax();
             firstPartTl.add(
-                TweenLite.to(window, 3,
+                TweenLite.to(window, 1,
                     {
                         scrollTo:{ y : "#fourthPartDiv" }
                     }
@@ -514,11 +514,27 @@ $(document).ready(function(){
 
 
         // Start Update
-
+                
+        // Gradient canvas
+        var hs_w = screenWidth/2,
+        hs_h = screenHeight/2;
+        var grd2 = context.createRadialGradient(
+            hs_w,hs_h,screenWidth/5,
+            hs_w,hs_h,screenHeight/6
+        );
+        grd2.addColorStop(0.5,"black");
+        grd2.addColorStop(.7,"white");
+        //
         var loop = function() {
             var i, len, g, p;
 
             context.save();
+            //Apply Gradient canvas
+            context.fillStyle = grd2;
+            context.fillRect(0, 0, screenWidth, screenHeight);
+            context.fillStyle = grad;
+            context.fillRect(0, 0, screenWidth, screenHeight);
+            //
             context.restore();
 
             for (i = 0, len = gravities.length; i < len; i++) {

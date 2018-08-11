@@ -1,12 +1,13 @@
 /* Google-Fonts: font-family: 'Dancing Script', cursive; */
 /*font-family: 'Dancing Script', cursive;
-font-family: 'Satisfy', cursive;*/
+font-family: 'Satisfy', cursive;
+font-family: 'Great Vibes', cursive;*/
 
 body {
     width: 100vw;
     margin:0;
     padding:0;
-    background-color: rgba(0,0,0,.4);
+    background-color: "rgba(0,0,0,1)"
 }
 
 h1 {
@@ -79,7 +80,7 @@ h1 {
 
 .greeting {
     height: 100vh;
-    background-color: rgba(0,100,0,.5);
+    /* background-color: rgba(0,100,0,.5); */
 }
 
 .faded {
@@ -183,4 +184,11 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     width: 100%;
     opacity: 1;
 }
+.bg-color-fourthpart {
+    background: #000
+}
 
+#fourthPartDiv > div {
+    font-family: 'Caveat', cursive;
+    padding: 10%;
+}
