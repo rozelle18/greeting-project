@@ -197,9 +197,9 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     padding: 10%;
 }
 
-.secondPartImage{
-    opacity: 1;
-    display: block;
+.sp_img {
+    opacity: 0;
+    display: none;
     height: 100px;
     width: 100px;
 }

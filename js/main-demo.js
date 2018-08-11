@@ -232,25 +232,28 @@ $(document).ready(function(){
 
         /* Start of second scene */
         var secondPartTl = new TimelineMax();
-        // secondPartTl.add(
-        //     TweenLite.to(window, 3,
-        //         {
-        //             onStart(){
-        //                 console.log('secondpart');
-        //             }
-        //         }
-        //     ), 1
-        // );
-        $('.secondPartImage').each(function(){
-            
-        });
-        var scene_2 = new ScrollMagic.Scene({
-            triggerElement: '#secondPartDiv',
-            reverse: false
-        })
-        .setTween(secondPartTl)
-        .addIndicators()
-        .addTo(sm_cont);
+        (function(){
+            new ScrollMagic.Scene({
+                triggerElement: '#secondPartDiv',
+                duration: 100
+            })
+            .on('enter',function(){
+                TweenMax.to('.secondPartImage_1',1,{
+                    scale: 1,
+                    opacity: 1,
+                    display: 'block'
+                })
+            })
+            .on('leave',function(){
+                TweenMax.to('.secondPartImage_1',2,{
+                    opacity: 0,
+                    scale: 0.2,
+                    display: 'none'
+                })
+            })
+            .addIndicators({name: 'secondPartImage_1'})
+            .addTo(sm_cont);
+        })();
 
         var thirdPartTl = new TimelineMax();
         thirdPartTl.add(
