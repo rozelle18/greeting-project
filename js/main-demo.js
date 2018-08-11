@@ -1,56 +1,3 @@
-var audioFiles = [
-   'https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3',
-   'https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3',
-   'https://rozelle18.github.io/greeting-project/assets/music/kiki-doYouLoveMe.mp3'
-];
-    
-function preloadAudio(url) {
-    var audio = new Audio();
-    // once this file loads, it will call loadedAudio()
-    // the file will be kept by the browser as cache
-    audio.addEventListener('canplaythrough', loadedAudio, false);
-    audio.src = url;
-}
-    
-var loaded = 0;
-function loadedAudio() {
-    // this will be called every time an audio file is loaded
-    // we keep track of the loaded files vs the requested files
-    loaded++;
-    if (loaded == audioFiles.length){
-    	// all have loaded
-    	init();
-    }
-}
-    
-var player = document.getElementById('player');
-function play(index) {
-    player.src = audioFiles[index];
-    player.play();
-}
-    
-// function init() {
-//     // do your stuff here, audio has been loaded
-//     // for example, play all files one after the other
-//     var i = 0;
-//     // once the player ends, play the next one
-//     player.onended = function() {
-//     	i++;
-//         if (i >= audioFiles.length) {
-//             // end 
-//             return;
-//         }
-//     	play(i);
-//     };
-//     // play the first file
-//     play(i);
-// }
-    
-// we start preloading all the audio files
-for (var i in audioFiles) {
-    preloadAudio(audioFiles[i]);
-}
-function init() {
 
 //var audio_1 = document.createElement('audio');
 $(document).ready(function(){
@@ -186,10 +133,7 @@ $(document).ready(function(){
             TweenLite.to(window, 3,
                 {
                     onStart(){
-                        $('#scrollIndicator').fadeOut(200);
-                        $('body').append(`
-                        <iframe width="0" height="0" src="https://www.youtube.com/embed/8SMcixGyI5c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        `)
+                        $('#scrollIndicator').fadeOut(200);                      
                     }
                 }
             ), 1
@@ -345,7 +289,6 @@ $(document).ready(function(){
         ]
         thirdPartGreeting.forEach(function(v,i){
             $('#thirdpart-text-container').append('<div class="faded thirdPartText_'+i+' stagger-text">'+v+'</div>');
-z
             thirdPartTl.add(
                 TweenMax.to('.thirdPartText_'+ i, v.length/22, {
                     display: "block",
@@ -462,7 +405,7 @@ z
                     scrollTo:{ y : "#fourthPartDiv" },
                     onStart(){
                         console.log('fourthPart');
-                        play(1);
+                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3');
                         // audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
                         $('#sketch-holder').remove();
                         $('#scrollIndicator').fadeOut(1000);
@@ -498,4 +441,3 @@ z
 
 });
 
-}

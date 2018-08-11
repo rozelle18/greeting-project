@@ -21,7 +21,7 @@ $(document).ready(function(){
                 {
                     onStart()
                     {
-                        play(2);
+                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/kiki-doYouLoveMe.mp3');
                         // audio_1.setAttribute('src','assets/music/kiki-doYouLoveMe.mp3');
                         // audio_1.setAttribute('volume', 0.3);  
                     }
