@@ -386,7 +386,7 @@ $(document).ready(function(){
             params.speed = 10;
         }
 
-        Finale 
+        //Finale 
         const fourthPartGreeting = [
             'How should I begin... ',
             'maybe we should start with',
@@ -397,6 +397,8 @@ $(document).ready(function(){
         ];
 
         var fourthPartTl = new TimelineMax();
+        
+        
         fourthPartTl.add(
             TweenLite.to(window, 3,
                 {
@@ -404,6 +406,7 @@ $(document).ready(function(){
                     onStart(){
                         console.log('fourthPart');
                         audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
+                        $('#sketch-holder').remove();
                         $('#scrollIndicator').fadeOut(1000);
                     }
                 }

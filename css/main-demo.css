@@ -38,6 +38,7 @@ h1 {
 }
 
 #firstpart-greeting {
+    word-wrap: break-word;
     padding: auto;
     text-align: center;
     margin: auto;
@@ -63,8 +64,13 @@ h1 {
 
 .space-div {
     height: 100vh;
-    z-index: 1;
-    background-color: rgba(255,55,200, .1);
+
+    /* background-color: rgba(255,55,200, .1); */
+}
+
+.space-div > div {
+    word-wrap: break-word;
+    width: 100vw;
 }
 
 .scrolldown-i {
@@ -109,11 +115,11 @@ h1 {
 }
 .greeting.second-part {
     height: 100vh;
-    background-color: rgba(100,0,0,.5);
+    /* background-color: rgba(100,0,0,.5); */
 }
 .greeting.third-part {
     height: 100vh;
-    background-color: rgba(0,0,155,.5);
+    /* background-color: rgba(0,0,155,.5); */
 }
 /* ---- imported arrow animation */
 html body [data-ca3_iconfont="ETmodules"]::before {
@@ -195,7 +201,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 #fourthPartDiv > div {
     font-family: 'Caveat', cursive;
     padding: 10%;
-    text-shadow: 10px 10px 15px black, 0 0 25px blue, 0 0 5px darkblue;
+    text-shadow: 0px 10px 15px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 .sp_img_container {
@@ -212,6 +218,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 
 #thirdpart-text-container {
     text-align: center;
+    font-family: 'Caveat', cursive;
 }
 
 .tp_images {
