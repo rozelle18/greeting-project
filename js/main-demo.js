@@ -1,7 +1,13 @@
 
 
-
 $(document).ready(function(){
+
+    // Audio part
+    var audio_1 = document.createElement('audio');
+    audio_1.setAttribute('src', 'assets/music/owl-city-meteor.mp3');     
+    audio_1.setAttribute('autoplay',true);
+    audio_1.setAttribute('loop',true);
+    // End of Audio
 
     var sm_cont = new ScrollMagic.Controller();
 
@@ -111,9 +117,9 @@ $(document).ready(function(){
             if(params.speedScroller){
                 params.speed = sm_cont.scrollPos()/10;
             }
-            // if (firstPartTl.isActive()){
-            //     e.returnValue = false;
-            // }
+            if (firstPartTl.isActive() || thirdPartTl.isActive()){
+                e.returnValue = false;
+            }
         };
         console.log('self-invoking function');
         // const aGreeting = [
@@ -128,56 +134,45 @@ $(document).ready(function(){
         const aGreeting = [
             'short greeting for testing'
         ];
-        // var firstPartTl = new TimelineMax();
-        // firstPartTl.add(
-        //     TweenLite.to(window, 3,
-        //         {
-        //             scrollTo:{ y : "#firstPartDiv" },
-        //             onStart(){
-        //                 $('#scrollIndicator').fadeOut(1000);
-        //             }
-        //         }
-        //     ), 1
-        // );
-
-        // aGreeting.forEach(function(v,i){
-        //     $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
-        //     console.log(v.length/7);
-        //     firstPartTl.add(
-        //         TweenMax.to('.firstPartText_'+i, v.length/15, {
-        //             display: "block",
-        //             opacity: 1,
-        //             yoyo: true,
-        //             repeatDelay: 1,
-        //             repeat: 1
-        //         })
-        //     );
-        // });
-
-        /*
-        * firstPartTl.add(
-                TweenMax.to('.text-container', 1,{
+        var firstPartTl = new TimelineMax();
+        firstPartTl.add(
+            TweenLite.to(window, 3,
+                {
+                    scrollTo:{ y : "#firstPartDiv" },
                     onStart(){
-                        params.speed -= 10;
+                        $('#scrollIndicator').fadeOut(1000);
                     }
+                }
+            ), 1
+        );
+
+        aGreeting.forEach(function(v,i){
+            $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
+            firstPartTl.add(
+                TweenMax.to('.firstPartText_'+i, v.length/15, {
+                    display: "block",
+                    opacity: 1,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
                 })
             );
-            <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
-        * */
-        // firstPartTl.call(function(){
-        //     console.log('--slow starspeed--');
-        //     params.speed = 5;
-        //     $('#scrollIndicator').fadeIn(1000);
-        // });
+        });
+        firstPartTl.call(function(){
+            console.log('--slow starspeed--');
+            params.speed = 5;
+            $('#scrollIndicator').fadeIn(1000);
+        });
 
 
-        // var scene_1 = new ScrollMagic.Scene({
-        //     triggerElement: '#firstPartDiv',
-        //     reverse: false
-        // })
-        // .setTween()
-        // .addIndicators()
-        // .addTo(sm_cont);
+        var scene_1 = new ScrollMagic.Scene({
+            triggerElement: '#firstPartDiv',
+            reverse: false
+        })
+        .setTween(firstPartTl)
+        .addIndicators()
+        .addTo(sm_cont);
 
         /* Start of second scene */
         var secondPartTl = new TimelineMax();
@@ -190,6 +185,7 @@ $(document).ready(function(){
                 }
             ), 1
         );
+        
         var scene_2 = new ScrollMagic.Scene({
             triggerElement: '#secondPartDiv',
             reverse: false
@@ -204,16 +200,22 @@ $(document).ready(function(){
                 {
                     onStart(){
                         console.log('thirdpart');
+                        $('#scrollIndicator').fadeOut(1000);
                     }
                 }
-            ), 1
+            )
         );
+        thirdPartTl.call(function(){
+            console.log('--slow starspeed--');
+            params.speed = 5;
+            $('#scrollIndicator').fadeIn(1000);
+        });
 
         var scene_3 = new ScrollMagic.Scene({
             triggerElement: '#thirdPartDiv',
             reverse: false
         })
-        .on("enter", slowDownStars)
+        .on('enter',slowDownStars)
         .setTween(thirdPartTl)
         .addIndicators()
         .addTo(sm_cont);
@@ -224,6 +226,30 @@ $(document).ready(function(){
             params.speed = 10;
         }
 
+        var scene_4 = new ScrollMagic.Scene({
+            triggerElement: '#fourthPartDiv',
+            reverse: false
+        })
+        .setTween(TweenLite.to(window, 3,
+            {
+                scrollTo:{ y : "#fourthPartDiv" },
+                onStart(){
+                    console.log('fourthPart');
+                    audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
+                    $('#scrollIndicator').fadeOut(1000);
+                }
+            }
+        ))
+        .addIndicators()
+        .addTo(sm_cont);
+
+        function slowDownStars(e){
+            console.log('slowdown');
+            params.speedScroller = false;
+            params.speed = 10;
+        }
+
+ 
     })();
 
 });

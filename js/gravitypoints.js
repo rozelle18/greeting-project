@@ -203,7 +203,28 @@ $(document).ready(function(){
                 this.radius *= 0.75;
                 if (this.currentRadius < 1) this.destroyed = true;
                 this._draw(ctx);
-                $('#gravitypoint-sketch-holder').fadeOut(2000);
+                $('#gravitypoint-sketch-holder').fadeOut(2000, function(){
+                    var aGreeting = [
+                        'final greeting for testing',
+                        'hehehe'
+                    ];
+                    var finalPartTl = new TimelineMax();
+            
+                    aGreeting.forEach(function(v,i){
+                        $('#fourthPartDiv').append('<div class="faded finalPartText'+i+' stagger-text">'+v+'</div>');
+                        console.log(v.length/7);
+                        firstPartTl.add(
+                            TweenMax.to('.firstPartText_'+i, v.length/15, {
+                                display: "block",
+                                opacity: 1,
+                                yoyo: true,
+                                repeatDelay: 1,
+                                repeat: 1
+                            })
+                        );
+                    });
+                });
+                $('#fourthPartDiv').addClass('.heart');
                 return;
             }
 
@@ -277,7 +298,6 @@ $(document).ready(function(){
     function Particle(x, y, radius) {
         Vector.call(this, x, y);
         this.radius = radius;
-
         this._latest = new Vector();
         this._speed  = new Vector();
     }
@@ -330,7 +350,9 @@ $(document).ready(function(){
         var BACKGROUND_COLOR      = 'rgba(0, 0, 0, .1)',
             PARTICLE_RADIUS       = 1,
             G_POINT_RADIUS        = 10,
-            G_POINT_RADIUS_LIMITS = 50;
+            G_POINT_RADIUS_LIMITS = 50,
+            ELLE_PARTICLE         = 'rgba(0, 255, 0, 1)';
+            ZOR_PARTICLE          = 'rgba(51, 204, 255, 1)';
 
 
         // Vars
@@ -426,13 +448,6 @@ $(document).ready(function(){
             }
         }
 
-        function removeParticle(num) {
-            if (particles.length < num) num = particles.length;
-            for (var i = 0; i < num; i++) {
-                particles.pop();
-            }
-        }
-
 
         // GUI Control
 
@@ -502,18 +517,24 @@ $(document).ready(function(){
             // }
             len = particles.length;
             bufferCtx.save();
-            bufferCtx.fillStyle = bufferCtx.strokeStyle = 'rgba(255,255,255,.4)';
+            //particle color
+            bufferCtx.fillStyle = 'rgba(255,255,255,.4)';
             bufferCtx.lineCap = bufferCtx.lineJoin = 'round';
             bufferCtx.lineWidth = PARTICLE_RADIUS * 2;
             bufferCtx.beginPath();
             for (i = 0; i < len; i++) {
                 p = particles[i];
                 p.update();
+                if(i==0){
+                    bufferCtx.strokeStyle = ELLE_PARTICLE;
+                } else if (i==1){
+                    bufferCtx.strokeStyle = ZOR_PARTICLE;
+                }
                 bufferCtx.moveTo(p.x, p.y);
                 bufferCtx.lineTo(p._latest.x, p._latest.y);
+                bufferCtx.stroke();
+                bufferCtx.beginPath();   
             }
-            bufferCtx.stroke();
-            bufferCtx.beginPath();
             for (i = 0; i < len; i++) {
                 p = particles[i];
                 bufferCtx.moveTo(p.x, p.y);
