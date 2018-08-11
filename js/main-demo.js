@@ -1,8 +1,8 @@
 
-    var audio_1 = document.createElement('audio');
+var audio_1 = document.createElement('audio');
 $(document).ready(function(){
 
-    // Audio part $('#audio_one').attr('src', 'assets/music/kiki-doYouLoveMe.mp3');  
+    // Audio part 
     audio_1.setAttribute('src','assets/music/Kodaline-the-One.mp3');
     audio_1.setAttribute('autoplay', true);
     audio_1.setAttribute('loop', true);
@@ -99,17 +99,6 @@ $(document).ready(function(){
     }
     setup();
 //-----------------Tweenmax----------------
-
-// var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
-// tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
-// tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
-// tl.addLabel('test-tl');
-// tl.play('test-tl');
-    // sm_cont.scrollTo(function(newpos){
-    //     TweenMax.to(window, 0.5, {scrollTo: {y:newpos}});
-    // });
-    // TweenMax.to(".scrolldown-i", 1, {opacity: 0, yoyo: true, repeat: -1});
-   
     (function(){
         window.ontouchmove = function(e) {
             if(params.speedScroller && !letsStart.isActive()){
@@ -123,7 +112,7 @@ $(document).ready(function(){
         var letsStart = new TimelineMax();
         var firstPartTl = new TimelineMax();
         //Intro
-        /*
+
         const introGreeting = [
             "    uhmm...",
             "  Hi Crush!",
@@ -168,11 +157,11 @@ $(document).ready(function(){
             $('#scrollIndicator').fadeIn(1000);
         });
         letsStart.play();
-        */
+        
         //End of Intro
 
         //start of first part
-        /*
+        
         const aGreeting = [
             'wondering what this is?',
             'eto na yung bagong version ko ng loveletter',
@@ -225,13 +214,12 @@ $(document).ready(function(){
             reverse: false
         })
         .setTween(firstPartTl)
-        .addIndicators()
+//        .addIndicators()
         .addTo(sm_cont);
-        */
-
+        
         /* Start of second scene */
         var secondPartTl = new TimelineMax();
-        /*
+        
         (function(){
         //start of sugarcubs images show
 
@@ -266,13 +254,11 @@ $(document).ready(function(){
                         display: 'none'
                     })
                 })
-                .addIndicators({name: 'secondPartImage_'+ci})
+ //               .addIndicators({name: 'secondPartImage_'+ci})
                 .addTo(sm_cont);
                 console.log(ci);
             });
         })(); 
-
-        */
 
        //Third Part
        const thirdPartGreeting = [
@@ -283,7 +269,7 @@ $(document).ready(function(){
            'the prettiest debutant I know'
         ];
         var thirdPartTl = new TimelineMax();
-        /* 
+        
         thirdPartTl.call(function(){
             console.log('--slow starspeed--');
             params.speed = 5;
@@ -391,25 +377,24 @@ $(document).ready(function(){
         })
         .on('enter',slowDownStars)
         .setTween(thirdPartTl)
-        .addIndicators()
+ //       .addIndicators()
         .addTo(sm_cont);
-        */
+        
         function slowDownStars(e){
             console.log('slowdown');
             params.speedScroller = false;
             params.speed = 10;
         }
 
-        //Finale 
-        // const fourthPartGreeting = [
-        //     'How should I begin... ',
-        //     'maybe we should start with',
-        //     'how crazy our first meeting was',
-        //     'bale, ako ung blue particle',
-        //     'then ikaw ung green.',
-        //     'click anywhere. You\'ll see :) '
-        // ];
-        const fourthPartGreeting = ['test'];
+        Finale 
+        const fourthPartGreeting = [
+            'How should I begin... ',
+            'maybe we should start with',
+            'how crazy our first meeting was',
+            'bale, ako ung blue particle',
+            'then ikaw ung green.',
+            'click anywhere. You\'ll see :) '
+        ];
 
         var fourthPartTl = new TimelineMax();
         fourthPartTl.add(
@@ -446,7 +431,7 @@ $(document).ready(function(){
             reverse: false
         })
         .setTween(fourthPartTl)
-        .addIndicators()
+//        .addIndicators()
         .addTo(sm_cont);
     })();
 
