@@ -233,26 +233,61 @@ $(document).ready(function(){
         /* Start of second scene */
         var secondPartTl = new TimelineMax();
         (function(){
-            new ScrollMagic.Scene({
-                triggerElement: '#secondPartDiv',
-                duration: 100
-            })
-            .on('enter',function(){
-                TweenMax.to('.secondPartImage_1',1,{
-                    scale: 1,
-                    opacity: 1,
-                    display: 'block'
+            // new ScrollMagic.Scene({
+            //     triggerElement: '#secondPartDiv',
+            //     duration: 100
+            // })
+            // .on('enter',function(){
+            //     TweenMax.to('.secondPartImage_1',1,{
+            //         scale: 1,
+            //         opacity: 1,
+            //         display: 'block'
+            //     })
+            // })
+            // .on('leave',function(){
+            //     TweenMax.to('.secondPartImage_1',2,{
+            //         opacity: 0,
+            //         scale: 0.2,
+            //         display: 'none'
+            //     })
+            // })
+            // .addIndicators({name: 'secondPartImage_1'})
+            // .addTo(sm_cont);
+            var aRandomizerForImg = [
+                200,
+                250,
+                100,
+                50
+            ]
+            $('.sp_img_container').each(function(i){
+                var ci = i+1;
+                let trElem = '.sp_img_'+ci;
+                if(ci == 0){
+                    trElem = '#secondpart-text-container';
+                }
+                new ScrollMagic.Scene({
+                    triggerElement: trElem,
+                    duration: 100
                 })
-            })
-            .on('leave',function(){
-                TweenMax.to('.secondPartImage_1',2,{
-                    opacity: 0,
-                    scale: 0.2,
-                    display: 'none'
+                .on('enter',function(){
+                    TweenMax.to('.secondPartImage_'+ci,1,{
+                        scale: 1,
+                        x: aRandomizerForImg[(Math.floor(Math.random()*aRandomizerForImg.length))],
+                        opacity: 1,
+                        display: 'block'
+                    })
                 })
-            })
-            .addIndicators({name: 'secondPartImage_1'})
-            .addTo(sm_cont);
+                .on('leave',function(){
+                    TweenMax.to('.secondPartImage_'+ci, 1,{
+                        opacity: 0,
+                        scale: 0.2,
+                        display: 'none'
+                    })
+                })
+                .addIndicators({name: 'secondPartImage_'+ci})
+                .addTo(sm_cont);
+                console.log(ci);
+            });
         })();
 
         var thirdPartTl = new TimelineMax();

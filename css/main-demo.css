@@ -197,9 +197,14 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     padding: 10%;
 }
 
-.sp_img {
-    opacity: 0;
-    display: none;
+.sp_img_container {
     height: 100px;
     width: 100px;
+}
+
+.sp_img_container > img {
+    opacity: 0;
+    display: none;
+    height: inherit;
+    width: inherit;
 }
