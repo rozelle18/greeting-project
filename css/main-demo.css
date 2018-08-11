@@ -208,3 +208,16 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     height: inherit;
     width: inherit;
 }
+
+#thirdpart-text-container {
+    text-align: center;
+}
+
+.tp_images {
+    border: 2px white;
+    border-style: groove;
+    border-radius: 5%;
+    padding: 10px;
+    max-width: 50vh;
+    height: auto;
+}

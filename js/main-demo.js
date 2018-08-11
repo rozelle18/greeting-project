@@ -232,27 +232,10 @@ $(document).ready(function(){
 
         /* Start of second scene */
         var secondPartTl = new TimelineMax();
+        /*
         (function(){
-            // new ScrollMagic.Scene({
-            //     triggerElement: '#secondPartDiv',
-            //     duration: 100
-            // })
-            // .on('enter',function(){
-            //     TweenMax.to('.secondPartImage_1',1,{
-            //         scale: 1,
-            //         opacity: 1,
-            //         display: 'block'
-            //     })
-            // })
-            // .on('leave',function(){
-            //     TweenMax.to('.secondPartImage_1',2,{
-            //         opacity: 0,
-            //         scale: 0.2,
-            //         display: 'none'
-            //     })
-            // })
-            // .addIndicators({name: 'secondPartImage_1'})
-            // .addTo(sm_cont);
+        //start of sugarcubs images show
+
             var aRandomizerForImg = [
                 200,
                 250,
@@ -288,9 +271,24 @@ $(document).ready(function(){
                 .addTo(sm_cont);
                 console.log(ci);
             });
-        })();
+        })(); 
 
+        */
+
+       const thirdPartGreeting = [
+        //    'To dearest ElleBelles',
+        //    'Mrs. Bantot',
+        //    'Hon',
+           '&'
+        //    'the prettiest debutant I know'
+        ];
         var thirdPartTl = new TimelineMax();
+
+        thirdPartTl.call(function(){
+            console.log('--slow starspeed--');
+            params.speed = 5;
+        });
+        
         thirdPartTl.add(
             TweenLite.to(window, 3,
                 {
@@ -302,12 +300,91 @@ $(document).ready(function(){
                 }
             )
         );
-        thirdPartTl.call(function(){
-            console.log('--slow starspeed--');
-            params.speed = 5;
-            $('#scrollIndicator').fadeIn(1000);
+        var aRotationRandomizer = [
+            360,
+            0,
+            0
+        ]
+        thirdPartGreeting.forEach(function(v,i){
+            $('#thirdpart-text-container').append('<div class="faded thirdPartText_'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
+            thirdPartTl.add(
+                TweenMax.to('.thirdPartText_'+ i, v.length/22, {
+                    display: "block",
+                    opacity: 1,
+                    x:Math.floor((Math.random() * 5) +1),
+                    y:Math.floor((Math.random() * 60) +1), 
+                    yoyo: true,
+                    rotation:  aRotationRandomizer[(Math.floor(Math.random()*aRotationRandomizer.length))],
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
         });
 
+        const aElleImages = [
+            'elle_1.jpg',
+            'elle_2.jpg',
+            'elle_3.jpg',
+            'elle_4.png'
+        ];
+        aElleImagesText = [
+            '',
+            '',
+            'Taeng Tae hahaha',
+            '~ Dear Papi, Jisas hahaha'
+        ];
+
+        aElleImages.forEach(function(v,i){
+            console.log(i);
+            $('#thirdpart-text-container').append(
+                `<div class="faded thirdPartImages_`+i+`">
+                    <img class="tp_images" src='assets\\`+v+`'/>
+                </div>`);
+            thirdPartTl.add(
+                TweenMax.to('.thirdPartImages_'+ i, 2, {
+                    display: "block",
+                    opacity: 1, 
+                    zIndex: 2,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+            if(i==2){
+                $('#thirdpart-text-container').append(
+                    '<div class="faded tpText_'+i+'">'+aElleImagesText[i]+'</div>');
+                thirdPartTl.add(
+                    TweenMax.to('.tpText_'+ i, 1, {
+                        display: "block",
+                        opacity: 1, 
+                        y: 150,
+                        yoyo: true,
+                        repeatDelay: 1,
+                        repeat: 1
+                    })
+                );
+            }
+            if(i==3){
+                $('#thirdpart-text-container').append(
+                    '<div class="faded tpText_'+i+'">'+aElleImagesText[i]+'</div>');
+                thirdPartTl.add(
+                    TweenMax.to('.tpText_'+ i, 1, {
+                        display: "block",
+                        opacity: 1, 
+                        x:10,
+                        rotation: 720,
+                        yoyo: true,
+                        repeatDelay: 1,
+                        repeat: 1
+                    })
+                );
+            }
+
+        });
+        thirdPartTl.call(function(){
+            $('#scrollIndicator').fadeIn(1000);
+        });
         var scene_3 = new ScrollMagic.Scene({
             triggerElement: '#thirdPartDiv',
             reverse: false
