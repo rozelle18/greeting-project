@@ -221,3 +221,15 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     max-width: 50vh;
     height: auto;
 }
+
+.fp_fixed {
+    color: cornflowerblue;
+    text-shadow: 4px 4px 8px black, 0 0 25px blue, 0 0 5px darkblue;
+    z-index: 5;
+    bottom: 0;
+    text-align: center;
+    position: fixed;
+    background: transparent;
+    height: 100vh;
+    width: 100vw;
+}

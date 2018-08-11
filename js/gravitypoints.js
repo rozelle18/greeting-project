@@ -1,9 +1,6 @@
 $(document).ready(function(){
     console.log('gravity points ready');
 
-
-
-
     function startCollapsedShow(){
         $('#gravitypoint-sketch-holder').fadeOut(2000,function(){
             console.log('Final Timeline');

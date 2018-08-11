@@ -110,13 +110,13 @@ $(document).ready(function(){
     //     TweenMax.to(window, 0.5, {scrollTo: {y:newpos}});
     // });
     // TweenMax.to(".scrolldown-i", 1, {opacity: 0, yoyo: true, repeat: -1});
+   
     (function(){
         window.ontouchmove = function(e) {
-            //console.log(e);
             if(params.speedScroller && !letsStart.isActive()){
                 params.speed = sm_cont.scrollPos()/10;
             }
-            if (letsStart.isActive()||firstPartTl.isActive() || thirdPartTl.isActive()){
+            if (letsStart.isActive()||firstPartTl.isActive()||thirdPartTl.isActive()||fourthParthTl.isActive()){
                 e.returnValue = false;
             }
         };
@@ -275,15 +275,16 @@ $(document).ready(function(){
 
         */
 
+       //Third Part
        const thirdPartGreeting = [
-        //    'To dearest ElleBelles',
-        //    'Mrs. Bantot',
-        //    'Hon',
-           '&'
-        //    'the prettiest debutant I know'
+           'To dearest ElleBelles',
+           'Mrs. Bantot',
+           'Hon',
+           '&',
+           'the prettiest debutant I know'
         ];
         var thirdPartTl = new TimelineMax();
-
+        /* 
         thirdPartTl.call(function(){
             console.log('--slow starspeed--');
             params.speed = 5;
@@ -332,7 +333,7 @@ $(document).ready(function(){
             '',
             '',
             'Taeng Tae hahaha',
-            '~ Dear Papi, Jisas hahaha'
+            'Dear Papi, Jisas. . .'
         ];
 
         aElleImages.forEach(function(v,i){
@@ -369,7 +370,7 @@ $(document).ready(function(){
                 $('#thirdpart-text-container').append(
                     '<div class="faded tpText_'+i+'">'+aElleImagesText[i]+'</div>');
                 thirdPartTl.add(
-                    TweenMax.to('.tpText_'+ i, 1, {
+                    TweenMax.to('.tpText_'+ i, 2.5, {
                         display: "block",
                         opacity: 1, 
                         x:10,
@@ -393,82 +394,60 @@ $(document).ready(function(){
         .setTween(thirdPartTl)
         .addIndicators()
         .addTo(sm_cont);
-
+        */
         function slowDownStars(e){
             console.log('slowdown');
             params.speedScroller = false;
             params.speed = 10;
         }
 
+        //Finale 
+        const fourthPartGreeting = [
+            'How should I begin... ',
+            'maybe we should start with',
+            'how crazy our first meeting was',
+            'bale, ako ung blue particle',
+            'then ikaw ung green.',
+            'click anywhere. You\'ll see :) '
+        ];
+
+        var fourthPartTl = new TimelineMax();
+        fourthPartTl.add(
+            TweenLite.to(window, 3,
+                {
+                    scrollTo:{ y : "#fourthPartDiv" },
+                    onStart(){
+                        console.log('fourthPart');
+                        audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
+                        $('#scrollIndicator').fadeOut(1000);
+                    }
+                }
+            )
+        );
+
+        fourthPartGreeting.forEach(function(v,i){
+            $('#fourthpart-text-container').append('<div class="fp_fixed faded fpText_'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
+            fourthPartTl.add(
+                TweenMax.to('.fpText_'+i, v.length/17, {
+                    display: "block",
+                    opacity: 1,
+                    scale: 0.75,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
+
+        
         var scene_4 = new ScrollMagic.Scene({
             triggerElement: '#fourthPartDiv',
             reverse: false
         })
-        .setTween(TweenLite.to(window, 3,
-            {
-                scrollTo:{ y : "#fourthPartDiv" },
-                onStart(){
-                    console.log('fourthPart');
-                    audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
-                    $('#scrollIndicator').fadeOut(1000);
-                }
-            }
-        ))
+        .setTween(fourthPartTl)
         .addIndicators()
         .addTo(sm_cont);
-
-        function slowDownStars(e){
-            console.log('slowdown');
-            params.speedScroller = false;
-            params.speed = 10;
-        }
-
- 
     })();
 
 });
-//
-// function preventDefault(e) {
-//     e = e || window.event;
-//     if (e.preventDefault)
-//         e.preventDefault();
-//     e.returnValue = false;
-// }
-//
-// function disableScroll(){
-//     if (window.addEventListener) // older FF
-//         window.addEventListener('DOMMouseScroll', preventDefault, false);
-//     window.onwheel = preventDefault; // modern standard
-//     window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-//     window.ontouchmove  = preventDefault; // mobile
-// }
-// function enableScroll() {
-//     if (window.removeEventListener)
-//         window.removeEventListener('DOMMouseScroll', preventDefault, false);
-//     window.onmousewheel = document.onmousewheel = null;
-//     window.onwheel = null;
-//     window.ontouchmove = null;
-//     document.onkeydown = null;
-// }
-
-// var firstPart = new TimelineMax()
-//     .to (".first-part", 3, {
-//         onStart() {
-//             console.log('test');
-//             firstPartElement.html('<h1 id="firstpart-text">Test</h1>');
-//             disableScroll();
-//         }
-//     })
-//     .to(window, 2, {scrollTo:{y:$("div.first-part")}})
-//     .to('#firstpart-text', 1, {
-//         onStart(){
-//             console.log('start of firstpart');
-//             $('#firstpart-text').text('new text');
-//         },
-//         onComplete(){
-//             console.log('end of first part');
-//             enableScroll();
-//         }
-//     });
-//  TweenLite.to(window, 2, {scrollTo:{y:$("div.first-part")}});
-// .to("#firstpart-greeting", 2,{ opacity:0});
