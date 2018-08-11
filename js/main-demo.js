@@ -1,7 +1,7 @@
 var audioFiles = [
-   'assets/music/owl-city-meteor.mp3',
-   'assets/music/Kodaline-the-One.mp3',
-   'assets/music/kiki-doYouLoveMe.mp3'
+   'https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3',
+   'https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3',
+   'https://rozelle18.github.io/greeting-project/assets/music/kiki-doYouLoveMe.mp3'
 ];
     
 function preloadAudio(url) {
@@ -187,9 +187,9 @@ $(document).ready(function(){
                 {
                     onStart(){
                         $('#scrollIndicator').fadeOut(200);
-                        play(0);
-                        // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
-                        // audio_1.play();
+                        $('body').append(`
+                        <iframe width="0" height="0" src="https://www.youtube.com/embed/8SMcixGyI5c" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        `)
                     }
                 }
             ), 1
@@ -452,8 +452,8 @@ $(document).ready(function(){
             'then ikaw ung green.',
             'and the pink gravity balls',
             'are the events that happened in our lives',
-            'things that eventually..',
-            'lead to us meeting',
+            'the eventually lead to us',
+            'meeting',
             'click anywhere. You\'ll see :) '
         ];
 
