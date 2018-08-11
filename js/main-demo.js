@@ -1,5 +1,8 @@
-
-//var audio_1 = document.createElement('audio');
+Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+    get: function(){
+        return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+    }
+})
 $(document).ready(function(){
 
     // Audio part 
@@ -7,7 +10,9 @@ $(document).ready(function(){
     // audio_1.setAttribute('autoplay', true);
     // audio_1.setAttribute('loop', true);
     // End of Audio
-
+if(document.getElementById('music').playing){ // checks if element is playing right now
+        // Do anything you want to
+    
     var sm_cont = new ScrollMagic.Controller();
     var params = {
         speed: 3,
@@ -438,6 +443,12 @@ $(document).ready(function(){
 //        .addIndicators()
         .addTo(sm_cont);
     })();
+} else {
+    setInterval(function(){
+        if(!document.getElementById('music').playing)
+            location.reload();
+    },4000)
 
+}
 });
 
