@@ -10,55 +10,6 @@ $(document).ready(function(){
     // End of Audio
 
     var sm_cont = new ScrollMagic.Controller();
-
-    (function(){
-        console.log('henlo');
-        const aGreeting = [
-            "    uhmm...",
-            "  Hi Crush :)",
-            "It's me , your most loyal admirer ",
-            " ZOR ",
-            "  aka ",
-            " Winzor Joseph M. Paelmo",
-            "Haba noh",
-            "kaya nga Zor na lang",
-            "pero hndi lang pangalan ko",
-            "ang mahaba saken",
-            " wink wink ",
-            "jk haha",
-            "let's start! Scroll down when you see the indicator ha "
-        ];
-        var letsStart = new TimelineMax();
-        letsStart.add(
-            TweenLite.to(window, 3,
-                {
-                    onStart(){
-                        $('#scrollIndicator').fadeOut(1000);
-                    }
-                }
-            ), 1
-        );
-        aGreeting.forEach(function(v,i){
-            $('.space-div').append('<div class="faded space-div'+i+' stagger-text">'+v+'</div>');
-            console.log(v.length/7);
-            letsStart.add(
-                TweenMax.to('.space-div'+i, v.length/12, {
-                    x:Math.floor((Math.random() * 10)+1),
-                    y:Math.floor((Math.random() * 60)+1),
-                    display: "block",
-                    opacity: 1,
-                    yoyo: true,
-                    repeatDelay: 1,
-                    repeat: 1
-                })
-            );
-        });
-        letsStart.call(function(){
-            $('#scrollIndicator').fadeIn(1000);
-        });
-        letsStart.play();
-    })();
-
     var params = {
         speed: 3,
         stars: 500,
@@ -162,27 +113,82 @@ $(document).ready(function(){
     (function(){
         window.ontouchmove = function(e) {
             //console.log(e);
-            if(params.speedScroller){
+            if(params.speedScroller && !letsStart.isActive()){
                 params.speed = sm_cont.scrollPos()/10;
             }
-            if (firstPartTl.isActive() || thirdPartTl.isActive()){
+            if (letsStart.isActive()||firstPartTl.isActive() || thirdPartTl.isActive()){
                 e.returnValue = false;
             }
         };
-        console.log('self-invoking function');
-        // const aGreeting = [
-        //     "uhmm...",
-        //     "Hi :) ",
-        //     "Lorem ipsum dolor",
-        //     " Proin ac aliquam odio ",
-        //     "  id blandit libero placerat. In gravida nibh",
-        //     "  Vivamus.",
-        //     "Proin id viverra erat. "
-        // ];
-        const aGreeting = [
-            'short greeting for testing'
-        ];
+
+        var letsStart = new TimelineMax();
         var firstPartTl = new TimelineMax();
+        //Intro
+        /*
+        const introGreeting = [
+            "    uhmm...",
+            "  Hi Crush!",
+            "It's me , your most loyal admirer ",
+            " ZOR ",
+            "  aka ",
+            " Winzor Joseph M. Paelmo",
+            "Haba noh",
+            "kaya nga Zor na lang",
+            "pero hndi lang pangalan ko",
+            "ang mahaba saken",
+            " ;) wink ",
+            "jk haha",
+            "let's start! Scroll down when you see the indicator ha "
+        ];
+        var letsStart = new TimelineMax();
+        letsStart.add(
+            TweenLite.to(window, 3,
+                {
+                    onStart(){
+                        $('#scrollIndicator').fadeOut(200);
+                    }
+                }
+            ), 1
+        );
+        introGreeting.forEach(function(v,i){
+            $('.space-div').append('<div class="faded space-div'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
+            letsStart.add(
+                TweenMax.to('.space-div'+i, v.length/17, {
+                    x:Math.floor((Math.random() * 5) +1),
+                    y:Math.floor((Math.random() * 60) +1),
+                    display: "block",
+                    opacity: 1,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
+        letsStart.call(function(){
+            $('#scrollIndicator').fadeIn(1000);
+        });
+        letsStart.play();
+        */
+        //End of Intro
+
+        //start of first part
+        /*
+        const aGreeting = [
+            'wondering what this is?',
+            'eto na yung bagong version ko ng loveletter',
+            'I mean',
+            'Birthday greeting card pala',
+            'haha',
+            'honestly,',
+            'naisip ko isulat nung una',
+            'but as you know...',
+            'pangit nga pla handwriting ko hahaha',
+            'So yeah, I simply',
+            'Opted to this :)',
+            'I hope you like it.'
+        ];
+
         firstPartTl.add(
             TweenLite.to(window, 3,
                 {
@@ -198,9 +204,10 @@ $(document).ready(function(){
             $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
             console.log(v.length/7);
             firstPartTl.add(
-                TweenMax.to('.firstPartText_'+i, v.length/15, {
+                TweenMax.to('.firstPartText_'+i, v.length/22, {
                     display: "block",
                     opacity: 1,
+                    scale: 0.75,
                     yoyo: true,
                     repeatDelay: 1,
                     repeat: 1
@@ -221,24 +228,27 @@ $(document).ready(function(){
         .setTween(firstPartTl)
         .addIndicators()
         .addTo(sm_cont);
+        */
 
         /* Start of second scene */
         var secondPartTl = new TimelineMax();
-        secondPartTl.add(
-            TweenLite.to(window, 3,
-                {
-                    onStart(){
-                        console.log('secondpart');
-                    }
-                }
-            ), 1
-        );
-        
+        // secondPartTl.add(
+        //     TweenLite.to(window, 3,
+        //         {
+        //             onStart(){
+        //                 console.log('secondpart');
+        //             }
+        //         }
+        //     ), 1
+        // );
+        $('.secondPartImage').each(function(){
+            
+        });
         var scene_2 = new ScrollMagic.Scene({
             triggerElement: '#secondPartDiv',
             reverse: false
         })
-        .setTween(TweenLite.to('#secondPartDiv', 1, {opacity:0}))
+        .setTween(secondPartTl)
         .addIndicators()
         .addTo(sm_cont);
 

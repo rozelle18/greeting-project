@@ -196,3 +196,10 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     font-family: 'Caveat', cursive;
     padding: 10%;
 }
+
+.secondPartImage{
+    opacity: 1;
+    display: block;
+    height: 100px;
+    width: 100px;
+}
