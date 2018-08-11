@@ -196,7 +196,6 @@ $(document).ready(function(){
         );
         introGreeting.forEach(function(v,i){
             $('.space-div').append('<div class="faded space-div'+i+' stagger-text">'+v+'</div>');
-            console.log(v.length/7);
             letsStart.add(
                 TweenMax.to('.space-div'+i, v.length/17, {
                     x:Math.floor((Math.random() * 5) +1),
@@ -246,7 +245,6 @@ $(document).ready(function(){
 
         aGreeting.forEach(function(v,i){
             $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
-            console.log(v.length/7);
             firstPartTl.add(
                 TweenMax.to('.firstPartText_'+i, v.length/22, {
                     display: "block",
@@ -259,7 +257,6 @@ $(document).ready(function(){
             );
         });
         firstPartTl.call(function(){
-            console.log('--slow starspeed--');
             params.speed = 5;
             $('#scrollIndicator').fadeIn(1000);
         });
@@ -312,7 +309,7 @@ $(document).ready(function(){
                 })
  //               .addIndicators({name: 'secondPartImage_'+ci})
                 .addTo(sm_cont);
-                console.log(ci);
+                
             });
         })(); 
 
@@ -327,7 +324,7 @@ $(document).ready(function(){
         var thirdPartTl = new TimelineMax();
         
         thirdPartTl.call(function(){
-            console.log('--slow starspeed--');
+           
             params.speed = 5;
         });
         
@@ -336,7 +333,6 @@ $(document).ready(function(){
                 {
                     scrollTo:{ y : "#thirdPartDiv" },
                     onStart(){
-                        console.log('thirdpart');
                         $('#scrollIndicator').fadeOut(1000);
                     }
                 }
@@ -349,7 +345,7 @@ $(document).ready(function(){
         ]
         thirdPartGreeting.forEach(function(v,i){
             $('#thirdpart-text-container').append('<div class="faded thirdPartText_'+i+' stagger-text">'+v+'</div>');
-            console.log(v.length/7);
+z
             thirdPartTl.add(
                 TweenMax.to('.thirdPartText_'+ i, v.length/22, {
                     display: "block",
@@ -378,7 +374,7 @@ $(document).ready(function(){
         ];
 
         aElleImages.forEach(function(v,i){
-            console.log(i);
+
             $('#thirdpart-text-container').append(
                 `<div class="faded thirdPartImages_`+i+`">
                     <img class="tp_images" src='assets\\`+v+`'/>
@@ -436,7 +432,7 @@ $(document).ready(function(){
         .addTo(sm_cont);
         
         function slowDownStars(e){
-            console.log('slowdown');
+
             params.speedScroller = false;
             params.speed = 10;
         }
