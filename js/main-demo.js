@@ -3,7 +3,7 @@ var audio_1 = document.createElement('audio');
 $(document).ready(function(){
 
     // Audio part 
-    // audio_1.setAttribute('src','assets/music/Kodaline-the-One.mp3');
+    audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
     audio_1.setAttribute('autoplay', true);
     audio_1.setAttribute('loop', true);
     // End of Audio
