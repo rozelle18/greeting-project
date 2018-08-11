@@ -1,11 +1,64 @@
+var audioFiles = [
+   'assets/music/owl-city-meteor.mp3',
+   'assets/music/Kodaline-the-One.mp3',
+   'assets/music/kiki-doYouLoveMe.mp3'
+];
+    
+function preloadAudio(url) {
+    var audio = new Audio();
+    // once this file loads, it will call loadedAudio()
+    // the file will be kept by the browser as cache
+    audio.addEventListener('canplaythrough', loadedAudio, false);
+    audio.src = url;
+}
+    
+var loaded = 0;
+function loadedAudio() {
+    // this will be called every time an audio file is loaded
+    // we keep track of the loaded files vs the requested files
+    loaded++;
+    if (loaded == audioFiles.length){
+    	// all have loaded
+    	init();
+    }
+}
+    
+var player = document.getElementById('player');
+function play(index) {
+    player.src = audioFiles[index];
+    player.play();
+}
+    
+// function init() {
+//     // do your stuff here, audio has been loaded
+//     // for example, play all files one after the other
+//     var i = 0;
+//     // once the player ends, play the next one
+//     player.onended = function() {
+//     	i++;
+//         if (i >= audioFiles.length) {
+//             // end 
+//             return;
+//         }
+//     	play(i);
+//     };
+//     // play the first file
+//     play(i);
+// }
+    
+// we start preloading all the audio files
+for (var i in audioFiles) {
+    preloadAudio(audioFiles[i]);
+}
+function init() {
 
-var audio_1 = document.createElement('audio');
+//var audio_1 = document.createElement('audio');
 $(document).ready(function(){
 
     // Audio part 
-    audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
-    audio_1.setAttribute('autoplay', true);
-    audio_1.setAttribute('loop', true);
+    // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
+    // audio_1.setAttribute('autoplay', true);
+    // audio_1.setAttribute('loop', true);
     // End of Audio
 
     var sm_cont = new ScrollMagic.Controller();
@@ -134,8 +187,9 @@ $(document).ready(function(){
                 {
                     onStart(){
                         $('#scrollIndicator').fadeOut(200);
-                        audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
-                        audio_1.play();
+                        play(0);
+                        // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
+                        // audio_1.play();
                     }
                 }
             ), 1
@@ -412,7 +466,8 @@ $(document).ready(function(){
                     scrollTo:{ y : "#fourthPartDiv" },
                     onStart(){
                         console.log('fourthPart');
-                        audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
+                        play(1);
+                        // audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
                         $('#sketch-holder').remove();
                         $('#scrollIndicator').fadeOut(1000);
                     }
@@ -446,3 +501,5 @@ $(document).ready(function(){
     })();
 
 });
+
+}

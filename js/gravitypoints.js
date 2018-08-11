@@ -19,9 +19,11 @@ $(document).ready(function(){
         $('#gravitypoint-sketch-holder').fadeOut(2000,function(){
             TweenLite.to(window, 3,
                 {
-                    onStart(){
-                        audio_1.setAttribute('src','assets/music/kiki-doYouLoveMe.mp3');
-                        audio_1.setAttribute('volume', 0.3);  
+                    onStart()
+                    {
+                        play(2);
+                        // audio_1.setAttribute('src','assets/music/kiki-doYouLoveMe.mp3');
+                        // audio_1.setAttribute('volume', 0.3);  
                     }
                 }
             )
