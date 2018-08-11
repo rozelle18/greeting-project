@@ -11,6 +11,54 @@ $(document).ready(function(){
 
     var sm_cont = new ScrollMagic.Controller();
 
+    (function(){
+        console.log('henlo');
+        const aGreeting = [
+            "    uhmm...",
+            "  Hi Crush :)",
+            "It's me , your most loyal admirer ",
+            " ZOR ",
+            "  aka ",
+            " Winzor Joseph M. Paelmo",
+            "Haba noh",
+            "kaya nga Zor na lang",
+            "pero hndi lang pangalan ko",
+            "ang mahaba saken",
+            " wink wink ",
+            "jk haha",
+            "let's start! Scroll down when you see the indicator ha "
+        ];
+        var letsStart = new TimelineMax();
+        letsStart.add(
+            TweenLite.to(window, 3,
+                {
+                    onStart(){
+                        $('#scrollIndicator').fadeOut(1000);
+                    }
+                }
+            ), 1
+        );
+        aGreeting.forEach(function(v,i){
+            $('.space-div').append('<div class="faded space-div'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
+            letsStart.add(
+                TweenMax.to('.space-div'+i, v.length/12, {
+                    x:Math.floor((Math.random() * 10)+1),
+                    y:Math.floor((Math.random() * 60)+1),
+                    display: "block",
+                    opacity: 1,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
+        letsStart.call(function(){
+            $('#scrollIndicator').fadeIn(1000);
+        });
+        letsStart.play();
+    })();
+
     var params = {
         speed: 3,
         stars: 500,
