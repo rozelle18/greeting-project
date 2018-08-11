@@ -1,5 +1,46 @@
 $(document).ready(function(){
     console.log('gravity points ready');
+
+
+
+
+    function startCollapsedShow(){
+        $('#gravitypoint-sketch-holder').fadeOut(3000,function(){
+            console.log('Final Timeline');
+            let aGreeting = [
+                'final greeting for testing',
+                'henlo'
+            ];
+            var firstPartTl = new TimelineMax();
+            firstPartTl.add(
+                TweenLite.to(window, 3,
+                    {
+                        scrollTo:{ y : "#fourthPartDiv" }
+                    }
+                ), 1
+            );
+    
+            aGreeting.forEach(function(v,i){
+                $('#fourthPartDiv').append('<div class="faded fourthPartText_'+i+' stagger-text">'+v+'</div>');
+                console.log(v.length/7);
+                firstPartTl.add(
+                    TweenMax.to('.fourthPartText_'+i, v.length/15, {
+                        display: "block",
+                        opacity: 1,
+                        yoyo: true,
+                        repeatDelay: 1,
+                        repeat: 1
+                    })
+                );
+            });
+    
+        })
+    }
+
+
+
+
+
     /**
      * requestAnimationFrame
      */
@@ -141,9 +182,9 @@ $(document).ready(function(){
         this._speed = new Vector();
     }
 
-    GravityPoint.RADIUS_LIMIT = 65;
+    GravityPoint.RADIUS_LIMIT = 10;
     GravityPoint.interferenceToPoint = true;
-
+    GP_COLLAPSED = false;
     GravityPoint.prototype = (function(o) {
         var s = new Vector(0, 0), p;
         for (p in o) s[p] = o[p];
@@ -156,7 +197,6 @@ $(document).ready(function(){
         _easeRadius:   0,
         _dragDistance: null,
         _collapsing:   false,
-
         hitTest: function(p) {
             return this.distanceTo(p) < this.radius;
         },
@@ -183,6 +223,10 @@ $(document).ready(function(){
         collapse: function(e) {
             this.currentRadius *= 1.75;
             this._collapsing = true;
+            if(!GP_COLLAPSED){
+                startCollapsedShow();
+                GP_COLLAPSED = true;
+            }
         },
 
         render: function(ctx) {
@@ -201,30 +245,13 @@ $(document).ready(function(){
 
             if (this._collapsing) {
                 this.radius *= 0.75;
-                if (this.currentRadius < 1) this.destroyed = true;
+                if (this.currentRadius < 1) {
+                    this.destroyed = true;    
+                    console.log('collapsing giant star');
+
+                }
                 this._draw(ctx);
-                $('#gravitypoint-sketch-holder').fadeOut(2000, function(){
-                    var aGreeting = [
-                        'final greeting for testing',
-                        'hehehe'
-                    ];
-                    var finalPartTl = new TimelineMax();
-            
-                    aGreeting.forEach(function(v,i){
-                        $('#fourthPartDiv').append('<div class="faded finalPartText'+i+' stagger-text">'+v+'</div>');
-                        console.log(v.length/7);
-                        firstPartTl.add(
-                            TweenMax.to('.firstPartText_'+i, v.length/15, {
-                                display: "block",
-                                opacity: 1,
-                                yoyo: true,
-                                repeatDelay: 1,
-                                repeat: 1
-                            })
-                        );
-                    });
-                });
-                $('#fourthPartDiv').addClass('.heart');
+                
                 return;
             }
 
@@ -281,7 +308,7 @@ $(document).ready(function(){
             r = Math.random() * this.currentRadius * 0.7 + this.currentRadius * 0.3;
             grd = ctx.createRadialGradient(this.x, this.y, r, this.x, this.y, this.currentRadius);
             //gravity ball
-            grd.addColorStop(0, 'rgba(150,150,150, .6)');
+            grd.addColorStop(0, 'rgba(255,150,255, .6)');
             grd.addColorStop(1, Math.random() < 0.2 ? 'rgba(255, 0, 0, 0.5)' : 'rgba(255, 100, 0, 0.75)');
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.currentRadius, 0, Math.PI * 2, false);

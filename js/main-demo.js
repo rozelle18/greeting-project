@@ -198,6 +198,7 @@ $(document).ready(function(){
         thirdPartTl.add(
             TweenLite.to(window, 3,
                 {
+                    scrollTo:{ y : "#thirdPartDiv" },
                     onStart(){
                         console.log('thirdpart');
                         $('#scrollIndicator').fadeOut(1000);
