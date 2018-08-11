@@ -133,8 +133,9 @@ $(document).ready(function(){
             TweenLite.to(window, 3,
                 {
                     onStart(){
-                        audio_1.play();
-                        $('#scrollIndicator').fadeOut(200);
+                        $('#scrollIndicator').fadeOut(200,function(){
+                            audio_1.setAttribute('src','assets/music/Kodaline-the-One.mp3');
+                        });
                     }
                 }
             ), 1
