@@ -195,6 +195,7 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 #fourthPartDiv > div {
     font-family: 'Caveat', cursive;
     padding: 10%;
+    text-shadow: 10px 10px 15px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 .sp_img_container {
@@ -223,7 +224,9 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 }
 
 .fp_fixed {
-    color: cornflowerblue;
+    color: rgb(red, rgb(87, 196, 247), blue);
+    font-family: 'Lakki Reddy', cursive;
+    font-weight: 100;
     text-shadow: 4px 4px 8px black, 0 0 25px blue, 0 0 5px darkblue;
     z-index: 5;
     bottom: 0;

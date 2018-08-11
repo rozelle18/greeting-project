@@ -1,12 +1,11 @@
 
-
+    var audio_1 = document.createElement('audio');
 $(document).ready(function(){
 
-    // Audio part
-    var audio_1 = document.createElement('audio');
-    audio_1.setAttribute('src', 'assets/music/owl-city-meteor.mp3');     
-    audio_1.setAttribute('autoplay',true);
-    audio_1.setAttribute('loop',true);
+    // Audio part $('#audio_one').attr('src', 'assets/music/kiki-doYouLoveMe.mp3');  
+    audio_1.setAttribute('src','assets/music/Kodaline-the-One.mp3');
+    audio_1.setAttribute('autoplay', true);
+    audio_1.setAttribute('loop', true);
     // End of Audio
 
     var sm_cont = new ScrollMagic.Controller();
@@ -116,7 +115,7 @@ $(document).ready(function(){
             if(params.speedScroller && !letsStart.isActive()){
                 params.speed = sm_cont.scrollPos()/10;
             }
-            if (letsStart.isActive()||firstPartTl.isActive()||thirdPartTl.isActive()||fourthParthTl.isActive()){
+            if (letsStart.isActive()||firstPartTl.isActive()||thirdPartTl.isActive()||fourthPartTl.isActive()){
                 e.returnValue = false;
             }
         };
@@ -402,14 +401,15 @@ $(document).ready(function(){
         }
 
         //Finale 
-        const fourthPartGreeting = [
-            'How should I begin... ',
-            'maybe we should start with',
-            'how crazy our first meeting was',
-            'bale, ako ung blue particle',
-            'then ikaw ung green.',
-            'click anywhere. You\'ll see :) '
-        ];
+        // const fourthPartGreeting = [
+        //     'How should I begin... ',
+        //     'maybe we should start with',
+        //     'how crazy our first meeting was',
+        //     'bale, ako ung blue particle',
+        //     'then ikaw ung green.',
+        //     'click anywhere. You\'ll see :) '
+        // ];
+        const fourthPartGreeting = ['test'];
 
         var fourthPartTl = new TimelineMax();
         fourthPartTl.add(

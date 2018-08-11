@@ -1,12 +1,43 @@
 $(document).ready(function(){
     console.log('gravity points ready');
-
+    var USER_CLICKS = 0; // 33 to collapse a fuckikng 55 radius star
+    var aUSERCLICKS_GREET = [];
+    aUSERCLICKS_GREET[3] = [
+            'I believe that our paths',
+            'crossed not because', 
+            'of sheer luck',
+            'I feel like everything in our life'
+        ];
+    var timeLineHandle = new TimelineMax();
+    var timeMaxHandle = new TimelineMax();
+    window.ontouchstart = function(e){
+        if(timeLineHandle.isActive()||timeMaxHandle.isActive()){
+            e.returnValue = false;
+        }
+    }
     function startCollapsedShow(){
         $('#gravitypoint-sketch-holder').fadeOut(2000,function(){
+            TweenLite.to(window, 3,
+                {
+                    onStart(){
+                        audio_1.setAttribute('src','assets/music/kiki-doYouLoveMe.mp3');
+                        audio_1.setAttribute('volume', 0.3);  
+                    }
+                }
+            )
             console.log('Final Timeline');
             let aGreeting = [
-                'final greeting for testing',
-                'henlo'
+                'I just want to confess ',
+                'that you\'re the best thing that ever happened to me',
+                'that\'s why',
+                'I want to greet you a happy birthday today :)',
+                'you\'re a gift to me and this world',
+                'I wish you more birthdays to come',
+                'Mikell Denise De Guzman',
+                'sure hope, that on the next ones',
+                'we could finally celebrate and',
+                'share it together <3',
+                'Till our next date :*'
             ];
             var firstPartTl = new TimelineMax();
             firstPartTl.add(
@@ -21,7 +52,7 @@ $(document).ready(function(){
                 $('#fourthPartDiv').append('<div class="faded fourthPartText_'+i+' stagger-text">'+v+'</div>');
                 console.log(v.length/7);
                 firstPartTl.add(
-                    TweenMax.to('.fourthPartText_'+i, v.length/15, {
+                    TweenMax.to('.fourthPartText_'+i, v.length/24, {
                         display: "block",
                         opacity: 1,
                         yoyo: true,
@@ -179,7 +210,8 @@ $(document).ready(function(){
         this._speed = new Vector();
     }
 
-    GravityPoint.RADIUS_LIMIT = 10;
+    //gravity limit! 
+    GravityPoint.RADIUS_LIMIT = 55;
     GravityPoint.interferenceToPoint = true;
     GP_COLLAPSED = false;
     GravityPoint.prototype = (function(o) {
@@ -374,7 +406,7 @@ $(document).ready(function(){
         var BACKGROUND_COLOR      = 'rgba(0, 0, 0, .1)',
             PARTICLE_RADIUS       = 1,
             G_POINT_RADIUS        = 10,
-            G_POINT_RADIUS_LIMITS = 50,
+            G_POINT_RADIUS_LIMITS = 75,
             ELLE_PARTICLE         = 'rgba(0, 255, 0, 1)';
             ZOR_PARTICLE          = 'rgba(51, 204, 255, 1)';
 
@@ -426,6 +458,7 @@ $(document).ready(function(){
         }
 
         function mouseDown(e) {
+            console.log(USER_CLICKS);
             for (var i = gravities.length - 1; i >= 0; i--) {
                 if (gravities[i].isMouseOver) {
                     gravities[i].startDrag(mouse);
@@ -439,6 +472,69 @@ $(document).ready(function(){
         }
 
         function mouseUp(e) {
+            USER_CLICKS++;
+            if (USER_CLICKS == 3){
+
+                timeLineHandle = new TimelineMax({paused:true});
+                aUSERCLICKS_GREET[USER_CLICKS].forEach(function(v,i){
+                    $('#fourthpart-text-container').append('<div class="fp_fixed faded fpGravityText-'+USER_CLICKS+'_'+i+' stagger-text">'+v+'</div>');
+                    timeLineHandle.add(TweenMax.to('.fpGravityText-'+USER_CLICKS+'_'+i, v.length/19, {
+                        display: "block",
+                        opacity: 1,
+                        scale: 0.75,
+                        yoyo: true,
+                        repeatDelay: 1,
+                        x:Math.floor((Math.random() * 5) +1),
+                        y:Math.floor((Math.random() * 60) +1),
+                        repeat: 1 }
+                    ));
+                });
+                timeLineHandle.play();
+            }
+            if ( USER_CLICKS == 7 
+                || USER_CLICKS == 9 
+                || USER_CLICKS == 10 
+                || USER_CLICKS == 11 
+                || USER_CLICKS == 13 
+                || USER_CLICKS == 15 
+                || USER_CLICKS == 17
+                || USER_CLICKS == 18 
+                || USER_CLICKS == 19
+                || USER_CLICKS == 20 
+                || USER_CLICKS == 21
+                || USER_CLICKS == 22 
+                || USER_CLICKS == 23
+                || USER_CLICKS == 25 
+                || USER_CLICKS == 29){
+                let v = [];
+                v[7] = '           our choices',
+                v[9] = 'our heartbreaks',
+                v[10] = 'our regrets',
+                v[11] = 'everything.',
+                v[13] = 'led us to this.',
+                v[15] = 'and when we\'re together,',
+                v[17] = 'I feel that our past was worth it.'
+                v[18] = ' After our chats'
+                v[19] = ' after every memes '
+                v[20] = ' after every date ';
+                v[21] = ' I felt...something growing..'
+                v[22] = 'from our corny jokes',
+                v[23] = 'our awkward calls',
+                v[25] = 'and random stories we shared',
+                v[29] = 'I grew attached to you.'
+                
+                $('#fourthpart-text-container').append('<div class="fp_fixed faded fpGravityText-'+USER_CLICKS+' stagger-text">'+v[USER_CLICKS]+'</div>');
+                timeMaxHandle = TweenMax.to('.fpGravityText-'+USER_CLICKS, v[USER_CLICKS].length/12, {
+                    display: "block",
+                    opacity: 1,
+                    scale: 0.75,
+                    yoyo: true,
+                    repeatDelay: 0,
+                    x:Math.floor((Math.random() * 5) +1),
+                    y:Math.floor((Math.random() * 60) +1),
+                    repeat: 1 }
+                )
+            }
             for (var i = 0, len = gravities.length; i < len; i++) {
                 if (gravities[i].dragging) {
                     gravities[i].endDrag();
@@ -516,11 +612,11 @@ $(document).ready(function(){
         var hs_w = screenWidth/2,
         hs_h = screenHeight/2;
         var grd2 = context.createRadialGradient(
-            hs_w,hs_h,screenWidth/5,
-            hs_w,hs_h,screenHeight/6
+            hs_w,hs_h,screenWidth/3,
+            hs_w,hs_h,screenHeight/12
         );
-        grd2.addColorStop(0.5,"black");
-        grd2.addColorStop(.7,"white");
+        grd2.addColorStop(0,"black");
+        grd2.addColorStop(1,"rgba(130,180,30, .8)");
         //
         var loop = function() {
             var i, len, g, p;
