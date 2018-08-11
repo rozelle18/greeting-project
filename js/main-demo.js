@@ -133,6 +133,7 @@ $(document).ready(function(){
             TweenLite.to(window, 3,
                 {
                     onStart(){
+                        audio_1.play();
                         $('#scrollIndicator').fadeOut(200);
                     }
                 }
