@@ -133,9 +133,9 @@ $(document).ready(function(){
             TweenLite.to(window, 3,
                 {
                     onStart(){
-                        $('#scrollIndicator').fadeOut(200,function(){
-                            audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
-                        });
+                        $('#scrollIndicator').fadeOut(200);
+                        audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
+                        audio_1.play();
                     }
                 }
             ), 1
