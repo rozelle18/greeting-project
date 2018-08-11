@@ -366,7 +366,6 @@ $(document).ready(function(){
                     })
                 );
             }
-
         });
         thirdPartTl.call(function(){
             $('#scrollIndicator').fadeIn(1000);
@@ -388,11 +387,17 @@ $(document).ready(function(){
 
         //Finale 
         const fourthPartGreeting = [
-            'How should I begin... ',
-            'maybe we should start with',
+            'How should I begin this ending... ',
+            'maybe I should start with',
             'how crazy our first meeting was',
-            'bale, ako ung blue particle',
+            'bale,',
+            'the concept is',
+            ' ako ung blue particle',
             'then ikaw ung green.',
+            'and the pink gravity balls',
+            'are the events that happened in our lives',
+            'the eventually lead to us',
+            'meeting',
             'click anywhere. You\'ll see :) '
         ];
 
