@@ -452,8 +452,8 @@ $(document).ready(function(){
             'then ikaw ung green.',
             'and the pink gravity balls',
             'are the events that happened in our lives',
-            'the eventually lead to us',
-            'meeting',
+            'things that eventually..',
+            'lead to us meeting',
             'click anywhere. You\'ll see :) '
         ];
 
