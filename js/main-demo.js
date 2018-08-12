@@ -141,6 +141,7 @@ $(document).ready(function(){
                     onStart(){
                         $('#scrollIndicator').fadeOut(200);
                         isVidPlaying = true;
+                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3');           
                     }
                 }
             ), 1
@@ -406,8 +407,8 @@ if(document.getElementById('music').playing){
             'then ikaw ung green.',
             'and the pink gravity balls',
             'are the events that happened in our lives',
-            'the eventually lead to us',
-            'meeting',
+            'which eventually ...',
+            'lead to us meeting',
             'click anywhere. You\'ll see :) '
         ];
 
