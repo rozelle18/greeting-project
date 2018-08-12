@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!--<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Satisfy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lakki+Reddy" rel="stylesheet">
     <link type="text/css" href="css/bulma.min.css" rel="stylesheet">
-    <!--<link type="text/css" href="css/main.css" rel="stylesheet">-->
-    <link type="text/css" href="css/main-demo.css" rel="stylesheet">
+    <link type="text/css" href="css/main.css" rel="stylesheet">
+    <!-- <link type="text/css" href="css/main-demo.css" rel="stylesheet"> -->
 </head>
 <body>
+    <video id="music" autoplay="true" name="media" class='faded' loop><source src="https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3" type="audio/mp3"></video>
     <div class="main-container">
-       <div class="space-div">
+        <div class="space-div">
            <!--<i class="fas fa-angle-down scrolldown-i"></i>-->
            <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon="" id="scrollIndicator"></a>
        </div>
@@ -24,18 +27,34 @@
         </div>
         <div class="greeting second-part" id="secondPartDiv">
             <div id="secondpart-text-container">
-
+                <div class='sp_img_1 sp_img_container'>
+                    <img class="secondPartImage_1" src="assets/sugarcub-pink-1.webp"/>
+                </div>
+                <div class='sp_img_2 sp_img_container'>
+                    <img class="secondPartImage_2" src="assets/sugar-male-2.png"/>
+                </div>
+                <div class='sp_img_3 sp_img_container'>
+                        <img class="secondPartImage_3" src="assets/sugarcub-pink-2.png"/>
+                </div>
+                <div class='sp_img_4 sp_img_container'>
+                        <img class="secondPartImage_4" src="assets/sugar-couple-4.png"/>
+                </div>
             </div>
         </div>
         <div class="greeting third-part" id="thirdPartDiv">
             <div id="thirdpart-text-container">
-
+                
             </div>
         </div>
-        <div class="greeting fourth-part" id="fourthPartDiv">
-            <canvas id="gravitypoint-sketch-holder">
-
-            </canvas>
+        <div class="bg-color-fourthpart">
+            <div id="fourthpart-text-container">
+        
+            </div>
+            <div class="greeting fourth-part heart" id="fourthPartDiv">
+                <canvas id="gravitypoint-sketch-holder">
+                    <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                </canvas>
+            </div>
         </div>
         <div class="starry-sky">
             <div id="sketch-holder">
@@ -51,7 +70,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/ScrollToPlugin.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
 <!--<script src="js/main.js"></script>-->
-<!--<script src="js/main-demo.js"></script>-->
+<script src="js/main-demo.js"></script>
 <script src="js/gravitypoints.js"></script>
 
 </html>

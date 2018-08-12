@@ -1,10 +1,20 @@
-
-
-
+Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
+    get: function(){
+        return !!(this.currentTime > 0 && !this.paused && !this.ended && this.readyState > 2);
+    }
+})
 $(document).ready(function(){
 
+    // Audio part 
+    // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
+    // audio_1.setAttribute('autoplay', true);
+    // audio_1.setAttribute('loop', true);
+    // End of Audio
+// checks if element is playing right now
+        // Do anything you want to
+    var isVidPlaying = false;
+    
     var sm_cont = new ScrollMagic.Controller();
-
     var params = {
         speed: 3,
         stars: 500,
@@ -95,180 +105,364 @@ $(document).ready(function(){
     }
     setup();
 //-----------------Tweenmax----------------
-
-// var tl = new TimelineMax({repeat: -1, repeatDelay: 1});
-// tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
-// tl.add(TweenLite.to(document.getElementById('word'), 5, {opacity:0, yoyo:true}));
-// tl.addLabel('test-tl');
-// tl.play('test-tl');
-    // sm_cont.scrollTo(function(newpos){
-    //     TweenMax.to(window, 0.5, {scrollTo: {y:newpos}});
-    // });
-    // TweenMax.to(".scrolldown-i", 1, {opacity: 0, yoyo: true, repeat: -1});
     (function(){
         window.ontouchmove = function(e) {
-            //console.log(e);
-            if(params.speedScroller){
+            if(params.speedScroller && !letsStart.isActive()){
                 params.speed = sm_cont.scrollPos()/10;
             }
-            // if (firstPartTl.isActive()){
-            //     e.returnValue = false;
-            // }
+            if (letsStart.isActive()||firstPartTl.isActive()||thirdPartTl.isActive()||fourthPartTl.isActive()){
+                e.returnValue = false;
+            }
         };
-        console.log('self-invoking function');
-        // const aGreeting = [
-        //     "uhmm...",
-        //     "Hi :) ",
-        //     "Lorem ipsum dolor",
-        //     " Proin ac aliquam odio ",
-        //     "  id blandit libero placerat. In gravida nibh",
-        //     "  Vivamus.",
-        //     "Proin id viverra erat. "
-        // ];
-        const aGreeting = [
-            'short greeting for testing'
+
+        var letsStart = new TimelineMax();
+        var firstPartTl = new TimelineMax();
+        //Intro
+
+        const introGreeting = [
+            "    uhmm...",
+            "  Hi Crush!",
+            "It's me , your most loyal admirer ",
+            " ZOR ",
+            "  aka ",
+            " Winzor Joseph M. Paelmo",
+            "Haba noh",
+            "kaya nga Zor na lang",
+            "pero hndi lang pangalan ko",
+            "ang mahaba saken",
+            " ;) wink ",
+            "jk haha",
+            "let's start! Scroll down when you see the indicator ha "
         ];
-        // var firstPartTl = new TimelineMax();
-        // firstPartTl.add(
-        //     TweenLite.to(window, 3,
-        //         {
-        //             scrollTo:{ y : "#firstPartDiv" },
-        //             onStart(){
-        //                 $('#scrollIndicator').fadeOut(1000);
-        //             }
-        //         }
-        //     ), 1
-        // );
-
-        // aGreeting.forEach(function(v,i){
-        //     $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
-        //     console.log(v.length/7);
-        //     firstPartTl.add(
-        //         TweenMax.to('.firstPartText_'+i, v.length/15, {
-        //             display: "block",
-        //             opacity: 1,
-        //             yoyo: true,
-        //             repeatDelay: 1,
-        //             repeat: 1
-        //         })
-        //     );
-        // });
-
-        /*
-        * firstPartTl.add(
-                TweenMax.to('.text-container', 1,{
-                    onStart(){
-                        params.speed -= 10;
-                    }
-                })
-            );
-            <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
-        * */
-        // firstPartTl.call(function(){
-        //     console.log('--slow starspeed--');
-        //     params.speed = 5;
-        //     $('#scrollIndicator').fadeIn(1000);
-        // });
-
-
-        // var scene_1 = new ScrollMagic.Scene({
-        //     triggerElement: '#firstPartDiv',
-        //     reverse: false
-        // })
-        // .setTween()
-        // .addIndicators()
-        // .addTo(sm_cont);
-
-        /* Start of second scene */
-        var secondPartTl = new TimelineMax();
-        secondPartTl.add(
+        var letsStart = new TimelineMax();
+        letsStart.add(
             TweenLite.to(window, 3,
                 {
                     onStart(){
-                        console.log('secondpart');
+                        $('#scrollIndicator').fadeOut(200);
+                        isVidPlaying = true;
+                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3');           
+                        $('#music').get(0).play();
                     }
                 }
             ), 1
         );
-        var scene_2 = new ScrollMagic.Scene({
-            triggerElement: '#secondPartDiv',
+        introGreeting.forEach(function(v,i){
+            $('.space-div').append('<div class="faded space-div'+i+' stagger-text">'+v+'</div>');
+            letsStart.add(
+                TweenMax.to('.space-div'+i, v.length/17, {
+                    x:Math.floor((Math.random() * 5) +1),
+                    y:Math.floor((Math.random() * 60) +1),
+                    display: "block",
+                    opacity: 1,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
+        letsStart.call(function(){
+            $('#scrollIndicator').fadeIn(1000);
+        });
+if(document.getElementById('music').playing){ 
+        letsStart.play();
+} else {
+    alert('RELOADING. FAILED TO LOAD RESOURCES.');
+    setInterval(function(){
+        if(!document.getElementById('music').playing&&!isVidPlaying)
+            location.reload();
+    },4000)
+
+}       
+        //End of Intro
+
+        //start of first part
+        
+        const aGreeting = [
+            'wondering what this is?',
+            'eto na yung bagong version ko ng loveletter',
+            'I mean',
+            'Birthday greeting card pala',
+            'haha',
+            'honestly,',
+            'naisip ko isulat nung una',
+            'but as you know...',
+            'pangit nga pla handwriting ko hahaha',
+            'So yeah, I simply',
+            'Opted to this :)',
+            'I hope you like it.'
+        ];
+
+        firstPartTl.add(
+            TweenLite.to(window, 3,
+                {
+                    scrollTo:{ y : "#firstPartDiv" },
+                    onStart(){
+                        $('#scrollIndicator').fadeOut(1000);
+                    }
+                }
+            ), 1
+        );
+
+        aGreeting.forEach(function(v,i){
+            $('#firstpart-text-container').append('<div class="faded firstPartText_'+i+' stagger-text">'+v+'</div>');
+            firstPartTl.add(
+                TweenMax.to('.firstPartText_'+i, v.length/22, {
+                    display: "block",
+                    opacity: 1,
+                    scale: 0.75,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
+        firstPartTl.call(function(){
+            params.speed = 5;
+            $('#scrollIndicator').fadeIn(1000);
+        });
+
+
+        var scene_1 = new ScrollMagic.Scene({
+            triggerElement: '#firstPartDiv',
             reverse: false
         })
-        .setTween(TweenLite.to('#secondPartDiv', 1, {opacity:0}))
-        .addIndicators()
+        .setTween(firstPartTl)
+//        .addIndicators()
         .addTo(sm_cont);
+        
+        /* Start of second scene */
+        var secondPartTl = new TimelineMax();
+        
+        (function(){
+        //start of sugarcubs images show
 
+            var aRandomizerForImg = [
+                200,
+                250,
+                100,
+                50
+            ]
+            $('.sp_img_container').each(function(i){
+                var ci = i+1;
+                let trElem = '.sp_img_'+ci;
+                if(ci == 0){
+                    trElem = '#secondpart-text-container';
+                }
+                new ScrollMagic.Scene({
+                    triggerElement: trElem,
+                    duration: 100
+                })
+                .on('enter',function(){
+                    TweenMax.to('.secondPartImage_'+ci,1,{
+                        scale: 1,
+                        x: aRandomizerForImg[(Math.floor(Math.random()*aRandomizerForImg.length))],
+                        opacity: 1,
+                        display: 'block'
+                    })
+                })
+                .on('leave',function(){
+                    TweenMax.to('.secondPartImage_'+ci, 1,{
+                        opacity: 0,
+                        scale: 0.2,
+                        display: 'none'
+                    })
+                })
+ //               .addIndicators({name: 'secondPartImage_'+ci})
+                .addTo(sm_cont);
+                
+            });
+        })(); 
+
+       //Third Part
+       const thirdPartGreeting = [
+           'To dearest ElleBelles',
+           'Mrs. Bantot',
+           'Hon',
+           '&',
+           'the prettiest debutant I know'
+        ];
         var thirdPartTl = new TimelineMax();
+        
+        thirdPartTl.call(function(){
+           
+            params.speed = 5;
+        });
+        
         thirdPartTl.add(
             TweenLite.to(window, 3,
                 {
+                    scrollTo:{ y : "#thirdPartDiv" },
                     onStart(){
-                        console.log('thirdpart');
+                        $('#scrollIndicator').fadeOut(1000);
                     }
                 }
-            ), 1
+            )
         );
+        var aRotationRandomizer = [
+            360,
+            0,
+            0
+        ]
+        thirdPartGreeting.forEach(function(v,i){
+            $('#thirdpart-text-container').append('<div class="faded thirdPartText_'+i+' stagger-text">'+v+'</div>');
+            thirdPartTl.add(
+                TweenMax.to('.thirdPartText_'+ i, v.length/22, {
+                    display: "block",
+                    opacity: 1,
+                    x:Math.floor((Math.random() * 5) +1),
+                    y:Math.floor((Math.random() * 60) +1), 
+                    yoyo: true,
+                    rotation:  aRotationRandomizer[(Math.floor(Math.random()*aRotationRandomizer.length))],
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
 
+        const aElleImages = [
+            'elle_1.jpg',
+            'elle_2.jpg',
+            'elle_3.jpg',
+            'elle_4.png'
+        ];
+        aElleImagesText = [
+            '',
+            '',
+            'Taeng Tae hahaha',
+            'Dear Papi, Jisas. . .'
+        ];
+
+        aElleImages.forEach(function(v,i){
+
+            $('#thirdpart-text-container').append(
+                `<div class="faded thirdPartImages_`+i+`">
+                    <img class="tp_images" src='assets\\`+v+`'/>
+                </div>`);
+            thirdPartTl.add(
+                TweenMax.to('.thirdPartImages_'+ i, 2, {
+                    display: "block",
+                    opacity: 1, 
+                    zIndex: 2,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+            if(i==2){
+                $('#thirdpart-text-container').append(
+                    '<div class="faded tpText_'+i+'">'+aElleImagesText[i]+'</div>');
+                thirdPartTl.add(
+                    TweenMax.to('.tpText_'+ i, 1, {
+                        display: "block",
+                        opacity: 1, 
+                        y: 150,
+                        yoyo: true,
+                        repeatDelay: 1,
+                        repeat: 1
+                    })
+                );
+            }
+            if(i==3){
+                $('#thirdpart-text-container').append(
+                    '<div class="faded tpText_'+i+'">'+aElleImagesText[i]+'</div>');
+                thirdPartTl.add(
+                    TweenMax.to('.tpText_'+ i, 2.5, {
+                        display: "block",
+                        opacity: 1, 
+                        x:10,
+                        rotation: 720,
+                        yoyo: true,
+                        repeatDelay: 1,
+                        repeat: 1
+                    })
+                );
+            }
+        });
+        thirdPartTl.call(function(){
+            $('#scrollIndicator').fadeIn(1000);
+        });
         var scene_3 = new ScrollMagic.Scene({
             triggerElement: '#thirdPartDiv',
             reverse: false
         })
-        .on("enter", slowDownStars)
+        .on('enter',slowDownStars)
         .setTween(thirdPartTl)
-        .addIndicators()
+ //       .addIndicators()
         .addTo(sm_cont);
-
+        
         function slowDownStars(e){
-            console.log('slowdown');
+
             params.speedScroller = false;
             params.speed = 10;
         }
 
+        //Finale 
+        const fourthPartGreeting = [
+            'How should I begin this ending... ',
+            'maybe I should start with',
+            'how crazy our first meeting was',
+            'bale,',
+            'the concept is',
+            ' ako ung blue particle',
+            'then ikaw ung green.',
+            'and the pink gravity balls',
+            'are the events that happened in our lives',
+            'which eventually ...',
+            'lead to us meeting',
+            'click anywhere. You\'ll see :) '
+        ];
+
+        var fourthPartTl = new TimelineMax();
+        
+        
+        fourthPartTl.add(
+            TweenLite.to(window, 3,
+                {
+                    scrollTo:{ y : "#fourthPartDiv" },
+                    onStart(){
+                        console.log('fourthPart');
+                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3');
+                        // audio_1.setAttribute('src', 'assets/music/Kodaline-the-One.mp3');  
+                        $('#sketch-holder').remove();
+                        $('#scrollIndicator').fadeOut(1000);
+                    }
+                }
+            )
+        );
+
+        fourthPartGreeting.forEach(function(v,i){
+            $('#fourthpart-text-container').append('<div class="fp_fixed faded fpText_'+i+' stagger-text">'+v+'</div>');
+            console.log(v.length/7);
+            fourthPartTl.add(
+                TweenMax.to('.fpText_'+i, v.length/17, {
+                    display: "block",
+                    opacity: 1,
+                    scale: 0.75,
+                    yoyo: true,
+                    repeatDelay: 1,
+                    repeat: 1
+                })
+            );
+        });
+
+        
+        var scene_4 = new ScrollMagic.Scene({
+            triggerElement: '#fourthPartDiv',
+            reverse: false
+        })
+        .setTween(fourthPartTl)
+//        .addIndicators()
+        .addTo(sm_cont);
     })();
 
-});
-//
-// function preventDefault(e) {
-//     e = e || window.event;
-//     if (e.preventDefault)
-//         e.preventDefault();
-//     e.returnValue = false;
-// }
-//
-// function disableScroll(){
-//     if (window.addEventListener) // older FF
-//         window.addEventListener('DOMMouseScroll', preventDefault, false);
-//     window.onwheel = preventDefault; // modern standard
-//     window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-//     window.ontouchmove  = preventDefault; // mobile
-// }
-// function enableScroll() {
-//     if (window.removeEventListener)
-//         window.removeEventListener('DOMMouseScroll', preventDefault, false);
-//     window.onmousewheel = document.onmousewheel = null;
-//     window.onwheel = null;
-//     window.ontouchmove = null;
-//     document.onkeydown = null;
-// }
 
-// var firstPart = new TimelineMax()
-//     .to (".first-part", 3, {
-//         onStart() {
-//             console.log('test');
-//             firstPartElement.html('<h1 id="firstpart-text">Test</h1>');
-//             disableScroll();
-//         }
-//     })
-//     .to(window, 2, {scrollTo:{y:$("div.first-part")}})
-//     .to('#firstpart-text', 1, {
-//         onStart(){
-//             console.log('start of firstpart');
-//             $('#firstpart-text').text('new text');
-//         },
-//         onComplete(){
-//             console.log('end of first part');
-//             enableScroll();
-//         }
-//     });
-//  TweenLite.to(window, 2, {scrollTo:{y:$("div.first-part")}});
-// .to("#firstpart-greeting", 2,{ opacity:0});
+    // } else {
+//     setInterval(function(){
+//         if(!document.getElementById('music').playing)
+//             location.reload();
+//     },4000)
+
+// }
+});
+
