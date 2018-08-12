@@ -12,6 +12,7 @@ $(document).ready(function(){
     // End of Audio
 // checks if element is playing right now
         // Do anything you want to
+    var isVidPlaying = false;
     
     var sm_cont = new ScrollMagic.Controller();
     var params = {
@@ -138,7 +139,8 @@ $(document).ready(function(){
             TweenLite.to(window, 3,
                 {
                     onStart(){
-                        $('#scrollIndicator').fadeOut(200);                      
+                        $('#scrollIndicator').fadeOut(200);
+                        isVidPlaying = true;
                     }
                 }
             ), 1
@@ -165,7 +167,7 @@ if(document.getElementById('music').playing){
 } else {
     alert('RELOADING. FAILED TO LOAD RESOURCES.');
     setInterval(function(){
-        if(!document.getElementById('music').playing)
+        if(!document.getElementById('music').playing&&!isVidPlaying)
             location.reload();
     },4000)
 
