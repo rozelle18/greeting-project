@@ -142,6 +142,7 @@ $(document).ready(function(){
                         $('#scrollIndicator').fadeOut(200);
                         isVidPlaying = true;
                         $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3');           
+                        $('#music').get(0).play();
                     }
                 }
             ), 1
