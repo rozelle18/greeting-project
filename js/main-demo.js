@@ -141,7 +141,7 @@ $(document).ready(function(){
                     onStart(){
                         $('#scrollIndicator').fadeOut(200);
                         isVidPlaying = true;
-                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3');           
+                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3');           
                         $('#music').get(0).play();
                     }
                 }
