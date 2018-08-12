@@ -10,7 +10,7 @@ $(document).ready(function(){
     // audio_1.setAttribute('autoplay', true);
     // audio_1.setAttribute('loop', true);
     // End of Audio
-if(document.getElementById('music').playing){ // checks if element is playing right now
+// checks if element is playing right now
         // Do anything you want to
     
     var sm_cont = new ScrollMagic.Controller();
@@ -160,8 +160,16 @@ if(document.getElementById('music').playing){ // checks if element is playing ri
         letsStart.call(function(){
             $('#scrollIndicator').fadeIn(1000);
         });
+if(document.getElementById('music').playing){ 
         letsStart.play();
-        
+} else {
+    alert('RELOADING. FAILED TO LOAD RESOURCES.');
+    setInterval(function(){
+        if(!document.getElementById('music').playing)
+            location.reload();
+    },4000)
+
+}       
         //End of Intro
 
         //start of first part
@@ -443,12 +451,14 @@ if(document.getElementById('music').playing){ // checks if element is playing ri
 //        .addIndicators()
         .addTo(sm_cont);
     })();
-} else {
-    setInterval(function(){
-        if(!document.getElementById('music').playing)
-            location.reload();
-    },4000)
 
-}
+
+    // } else {
+//     setInterval(function(){
+//         if(!document.getElementById('music').playing)
+//             location.reload();
+//     },4000)
+
+// }
 });
 
