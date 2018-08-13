@@ -4,7 +4,13 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     }
 })
 $(document).ready(function(){
-
+    $('body').on('click', function(){
+        if(isVidPlaying == false) {
+            $('#music').attr('src', 'https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3');
+            $('#music').get(0).play();
+            isVidPlaying = true;
+        }
+    });
     // Audio part 
     // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
     // audio_1.setAttribute('autoplay', true);
@@ -131,7 +137,7 @@ $(document).ready(function(){
             "pero hndi lang pangalan ko",
             "ang mahaba saken",
             " ;) wink ",
-            "jk haha",
+            "pati Pasensya, hahahhhaha",
             "let's start! Scroll down when you see the indicator ha "
         ];
         var letsStart = new TimelineMax();
@@ -140,9 +146,6 @@ $(document).ready(function(){
                 {
                     onStart(){
                         $('#scrollIndicator').fadeOut(200);
-                        isVidPlaying = true;
-                        $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3');           
-                        $('#music').get(0).play();
                     }
                 }
             ), 1
