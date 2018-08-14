@@ -45,7 +45,7 @@ $(document).ready(function(){
             firstPartTl.add(
                 TweenLite.to(window, 1,
                     {
-                        scrollTo:{ y : "#fourthPartDiv" }
+                        scrollTo:{ y : "#fourthPartDiv", autoKill:false }
                     }
                 ), 1
             );

@@ -199,7 +199,7 @@ if(document.getElementById('music').playing){
         firstPartTl.add(
             TweenLite.to(window, 3,
                 {
-                    scrollTo:{ y : "#firstPartDiv" },
+                    scrollTo:{ y : "#firstPartDiv" , autoKill:false},
                     onStart(){
                         $('#scrollIndicator').fadeOut(1000);
                     }
@@ -224,7 +224,6 @@ if(document.getElementById('music').playing){
             params.speed = 5;
             $('#scrollIndicator').fadeIn(1000);
         });
-
 
         var scene_1 = new ScrollMagic.Scene({
             triggerElement: '#firstPartDiv',
@@ -295,7 +294,7 @@ if(document.getElementById('music').playing){
         thirdPartTl.add(
             TweenLite.to(window, 3,
                 {
-                    scrollTo:{ y : "#thirdPartDiv" },
+                    scrollTo:{ y : "#thirdPartDiv", autoKill:false },
                     onStart(){
                         $('#scrollIndicator').fadeOut(1000);
                     }
@@ -422,7 +421,7 @@ if(document.getElementById('music').playing){
         fourthPartTl.add(
             TweenLite.to(window, 3,
                 {
-                    scrollTo:{ y : "#fourthPartDiv" },
+                    scrollTo:{ y : "#fourthPartDiv", autoKill:false },
                     onStart(){
                         console.log('fourthPart');
                         $('#music').attr('src','https://rozelle18.github.io/greeting-project/assets/music/Kodaline-the-One.mp3');
