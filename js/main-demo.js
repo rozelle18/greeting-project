@@ -5,12 +5,6 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
 })
 $(document).ready(function(){
     $('body').on('click', function(){
-        if(isVidPlaying == false) {
-            $('#music').attr('src', 'https://rozelle18.github.io/greeting-project/assets/music/owl-city-meteor.mp3');
-            $('#music').get(0).play();
-            isVidPlaying = true;
-        }
-    });
     // Audio part 
     // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
     // audio_1.setAttribute('autoplay', true);
@@ -18,7 +12,6 @@ $(document).ready(function(){
     // End of Audio
 // checks if element is playing right now
         // Do anything you want to
-    var isVidPlaying = false;
     
     var sm_cont = new ScrollMagic.Controller();
     var params = {
@@ -174,7 +167,7 @@ if(document.getElementById('music').playing){
 } else {
     alert('RELOADING. FAILED TO LOAD RESOURCES.');
     setInterval(function(){
-        if(!document.getElementById('music').playing&&!isVidPlaying)
+        if(!document.getElementById('music').playing)
             location.reload();
     },4000)
 
