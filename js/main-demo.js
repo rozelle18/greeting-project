@@ -4,7 +4,6 @@ Object.defineProperty(HTMLMediaElement.prototype, 'playing', {
     }
 })
 $(document).ready(function(){
-    $('body').on('click', function(){
     // Audio part 
     // audio_1.setAttribute('src','assets/music/owl-city-meteor.mp3');
     // audio_1.setAttribute('autoplay', true);
