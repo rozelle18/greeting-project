@@ -7,7 +7,7 @@ body {
     width: 100vw;
     margin:0;
     padding:0;
-    background-color: "rgba(0,0,0,1)"
+    background-color: "rgba(0,0,0,1)";
 }
 
 h1 {
@@ -23,7 +23,6 @@ h1 {
 .starry-sky {
     top: 0;
     width: 100%;
-    height: 100%;
     position: absolute;
     background-image: url('../assets/topper-background-2.jpg');
     background-size: cover;
@@ -55,6 +54,9 @@ h1 {
 }
 .main-container {
     height: 500vh;
+    background-color: black;
+    z-index: -5;
+    position: absolute;
 }
 
 .greeting-container {
@@ -126,6 +128,7 @@ h1 {
 }
 .greeting.third-part {
     height: 100vh;
+    background-color: black;
     /* background-color: rgba(0,0,155,.5); */
 }
 /* ---- imported arrow animation */

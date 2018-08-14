@@ -112,12 +112,14 @@ $(document).ready(function(){
     setup();
 //-----------------Tweenmax----------------
     (function(){
-        window.ontouchmove = function(e) {
+    
+        window.onscroll = function(e) {
             if(params.speedScroller && !letsStart.isActive()){
                 params.speed = sm_cont.scrollPos()/10;
             }
             if (letsStart.isActive()||firstPartTl.isActive()||thirdPartTl.isActive()||fourthPartTl.isActive()){
-                e.returnValue = false;
+                e.returnValue = false;  
+                console.log('scrolling');
             }
         };
 
